@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="106" height="70" viewBox="0 0 106 70">
+    <defs>
+        <linearGradient id="q1rcg13tba" x1="15.69%" x2="83.111%" y1="7.833%" y2="87.339%">
+            <stop offset="0%" stop-color="#00FF42"/>
+            <stop offset="100%" stop-color="#A4FF00"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path d="M0 0H106V70H0z" transform="translate(-667 -139) translate(550 102) translate(117 37)"/>
+                    <g>
+                        <path fill="url(#q1rcg13tba)" d="M2 65c-1.105 0-2-.895-2-2V20c0-1.105.895-2 2-2h13V2c0-1.105.895-2 2-2h40c1.105 0 2 .895 2 2v61c0 1.105-.895 2-2 2H2z" opacity=".36" transform="translate(-667 -139) translate(550 102) translate(117 37) translate(4.5 4)"/>
+                        <g>
+                            <path fill="#05D686" d="M46.844 0H6.48C2.908 0 0 2.908 0 6.478v32.013c0 3.574 2.908 6.481 6.481 6.481h40.363c3.573 0 6.48-2.907 6.48-6.48V6.477c0-3.57-2.907-6.478-6.48-6.478" opacity=".57" transform="translate(-667 -139) translate(550 102) translate(117 37) translate(4.5 4) translate(43 20)"/>
+                            <path fill="#FFF" d="M46.377 9.51L26.662 26.05 6.948 9.51c-.639-.537-.72-1.483-.184-2.122.53-.636 1.486-.72 2.121-.187l17.777 14.92L44.44 7.202c.636-.54 1.588-.452 2.124.187.534.639.452 1.585-.186 2.121" transform="translate(-667 -139) translate(550 102) translate(117 37) translate(4.5 4) translate(43 20)"/>
+                        </g>
+                        <path stroke="#FFF" stroke-linejoin="round" stroke-width="2.5" d="M9 16.8L29.5 16.8 29.5 65.1" transform="translate(-667 -139) translate(550 102) translate(117 37) translate(4.5 4)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

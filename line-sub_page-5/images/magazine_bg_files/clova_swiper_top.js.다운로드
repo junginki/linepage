@@ -1,0 +1,23 @@
+$(function(){
+  if($(".swiper-slide").length > 1) {
+    var swiperTopView = new Swiper('.FnTopDeviceSwiper.swiper-container', {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      paginationType:'bullets',
+      autoplay:4000,
+      speed: 600,
+      mode:'horizontal',
+      loop: true,
+      slidesPerView: 1,
+      autoplayDisableOnInteraction: false,
+      centeredSlides : true,
+      spaceBetween: 0,
+      initialSlide:0,
+      paginationAsRange: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      preventClicks: false,
+      preventClicksPropagation: false
+    });
+  }
+})

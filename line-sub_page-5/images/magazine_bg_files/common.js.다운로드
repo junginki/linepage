@@ -1,0 +1,95 @@
+// デザインの最大幅以上の場合横スクロール削除
+$(function(){
+  $(window).on('load resize', function(){
+    var w = $(window).width();
+    var min_w = 767, max_w = 1280;
+    if( w > min_w){ //PC表示の場合
+      if(w < max_w){
+          $('body').css({'overflow-x':'auto'});
+      } else {
+        $('body').css({'overflow-x':'hidden'});
+      }
+    }
+  });
+
+  setToggle();
+});
+
+//ページ内タブ切り替え処理
+$(function() {
+  let tabs = $(".FnTab");
+  $(".FnTab").on("click", function() {
+    const index = tabs.index(this);
+    tabs.removeClass("active").eq(index).addClass("active");
+    $(".FnContent").removeClass("show").eq(index).addClass("show");
+  })
+})
+
+// iPadで横スクロールしないように制御
+;(function($) {
+  var ua = navigator.userAgent.toLowerCase();
+  var iPadViewPort = 1280;
+  var isiPad = (ua.indexOf("ipad") > -1);
+  if(isiPad){
+    $('meta[name="viewport"]').attr('content', 'width=' + iPadViewPort + ', initial-scale=1.0');
+  }
+}(jQuery));
+
+
+
+function dateFormatter(date, format, zeroFormat) {
+
+    var y,m,d;
+    y = date.getFullYear();
+    m = date.getMonth() + 1;
+    d = date.getDate();
+    if(zeroFormat){
+      m = ('00' + m).slice(-2);
+      d = ('00' + d).slice(-2);
+    }
+    format = format.replace(/YYYY/, y);
+    format = format.replace(/MM/, m);
+    format = format.replace(/DD/, d);
+
+    return format;
+}
+function zeroPadding(num,length){
+  var paddingtex = String(num);
+  while(paddingtex.length<length){
+    paddingtex  =  "0" + paddingtex;
+  }
+  return paddingtex;
+}
+
+// スクロール禁止
+function no_scroll() {
+    // PCでのスクロール禁止
+    document.addEventListener("mousewheel", scroll_control, { passive: false });
+    // スマホでのタッチ操作でのスクロール禁止
+    document.addEventListener("touchmove", scroll_control, { passive: false });
+}
+// スクロール禁止解除
+function return_scroll() {
+    // PCでのスクロール禁止解除
+    document.removeEventListener("mousewheel", scroll_control, { passive: false });
+    // スマホでのタッチ操作でのスクロール禁止解除
+    document.removeEventListener('touchmove', scroll_control, { passive: false });
+}
+// スクロール関連メソッド
+function scroll_control(event) {
+    event.preventDefault();
+}
+
+// アコーディオン
+function setToggle() {
+  $('.FnToggle').on('click',function(){
+    if($(this).hasClass('ExOpen')){
+      // $(window).scrollTop($(window).scrollTop() - $(this).prev('.FnToggleContent').innerHeight());
+      $(this).nextAll('.FnToggleContent').hide();
+      $(this).removeClass('ExOpen').find('.FnToggleText').text('開く');
+    }else{
+      $(this).nextAll('.FnToggleContent').show();
+      $(this).addClass('ExOpen').find('.FnToggleText').text('閉じる');
+    }
+  });
+}

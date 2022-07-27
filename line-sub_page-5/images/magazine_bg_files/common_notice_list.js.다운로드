@@ -1,0 +1,293 @@
+
+//title,description,keywords書き換え
+function writeMetaInfo(param){
+  var title,description,keywords,noticename,contents;
+
+  if(param == ""){
+    noticename = "お知らせ一覧";
+    contents = "新機能やお得なキャンペーン";
+  }else if(param.split("=")[1] == "NEWFUNC"){
+    noticename = "新機能アップデート一覧";
+    contents = "新機能やアップデート";
+  }else if(param.split("=")[1] == "MEDIA"){
+    noticename = "メディア掲載一覧";
+    contents = "外部メディアに掲載された";
+  }
+
+  //Titleの書き換え
+  title = noticename + " | LINE CLOVA公式サイト ";
+  $("title").text(title);
+  $("meta[property='og:title']").prop('content', title);
+  $("meta[property='og:site_name']").prop('content', title);
+  $("meta[name='twitter:title']").prop('content', title);
+
+  //Descriptionの書き換え
+  description = "LINE CLOVA公式サイトの" + noticename + "です。CLOVAの" + contents + "情報をいち早くお届けします。";
+  $("meta[name=description]").prop('content', description);
+  $("meta[property='og:description']").prop('content', description);
+  $("meta[name='twitter:description']").prop('content', description);
+
+  //keywordsの書き換え
+  keywords = "";
+  $("meta[name=keywords]").prop('content', keywords);
+}
+
+// お知らせ一覧
+
+// お知らせリストの作成
+function writeNoticeList(param){
+  var displayHeight = $('#FnViewNoticeList').outerHeight();
+  $('#FnViewNoticeList').css('height', displayHeight);
+
+  // お知らせリストの初期化
+  $('#FnViewNoticeList').children().remove();
+
+  // URL毎に表示判定と初期表示件数、表示ページの設定
+  var maxCnt;
+  var TOP_INIT_MAX_DISPLAY = 4;
+  var NOTICE_INIT_MAX_DISPLAY = 20;
+  if(location.pathname.replace( /index.html/g , "" ) == '/' || location.pathname.replace( /index.html/g , "" ) == '/desk/'){
+    maxCnt = TOP_INIT_MAX_DISPLAY;
+  } else if (location.pathname.replace( /index.html/g , "" ) == '/notice/'){
+    maxCnt = NOTICE_INIT_MAX_DISPLAY;
+  } else {
+    return;
+  }
+
+  // パラメータを基にお知らせ一覧の取得
+  var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+
+  $.ajax({
+    type: 'GET',
+    url: jsHost + location.hostname + '/webapi/notice/list',
+    data: "division=NORMAL"
+  }).done(function(data) {
+    if(!data){
+      if(maxCnt == TOP_INIT_MAX_DISPLAY){
+        $("#FnNoticeSection").hide();
+      } else if(maxCnt == NOTICE_INIT_MAX_DISPLAY){
+        writeErrorNotFound();
+        resizeForIpad();
+      }
+      return;
+    }
+    var newData = JSON.parse(data);
+    if(newData.noticeList.length == 0){
+      writeEmptyNotice();
+      return;
+    }
+
+    var param = '';
+    var category = '';
+    var displayCnt = newData.noticeList.length;
+    // 抽出データのカテゴリの判定。空文字の場合全件。
+    if(this.url.split('?')[1] && this.url.split('?')[1].split('=')[1]){
+      param = this.url.split('?')[1];
+      category = this.url.split('?')[1].split('=')[1];
+    }
+
+    for(var i = 0; i < displayCnt; i++){
+      // お知らせ一覧タブの場合「メディア情報」は除外
+      if(category == '' && newData.noticeList[i].category == 'MEDIA'){
+        continue;
+      }
+      // 別タブ表示の設定
+      if(newData.noticeList[i].viewTabType){
+        newData.noticeList[i].viewTabType = "_blank";
+      }else{
+        newData.noticeList[i].viewTabType = "";
+      }
+      if(newData.noticeList[i].displayDate){
+        var formatDate = newData.noticeList[i].displayDate.replace( /-/g , "/" ) ;
+      }
+      var nt = '';
+      nt +='<li>\n';
+      nt +=' <span class="' + newData.noticeList[i].category + '">';
+      if(newData.noticeList[i].url){
+        nt +='<a href="' + newData.noticeList[i].url + '" target="' + newData.noticeList[i].viewTabType + '">\n';
+        nt +=   newData.noticeList[i].subject + '\n';
+        nt +=' </a>';
+      }else{
+        nt +=   newData.noticeList[i].subject + '\n';
+      }
+      nt +='</span>\n';
+      nt +=' <time datetime="' + newData.noticeList[i].displayDate + '">' + formatDate + '</time>\n';
+      nt +='</li>\n';
+      $("#FnViewNoticeList").append(nt);
+      $("#FnViewNoticeList li").each(function(i){
+        if(i >= maxCnt){
+          $(this).addClass('ExHidden');
+        }
+      });
+    }
+    $('#FnViewNoticeList').css('height','auto');
+    $('#FnViewNoticeList li:visible:last').addClass('ExLast');
+    if(maxCnt == NOTICE_INIT_MAX_DISPLAY){
+      removeDammyHeight();
+      checkNoticeMoreBtn();
+      resizeForIpad();
+    }
+  }).fail(function(jqXHR, textStatus, error) {
+    if(maxCnt == TOP_INIT_MAX_DISPLAY){
+      if(jqXHR.status == "404") {
+        writeEmptyNotice();
+      } else {
+        $("#FnNoticeSection").hide();
+      }
+    } else if(maxCnt == NOTICE_INIT_MAX_DISPLAY){
+      if(jqXHR.status == "400"){
+        writeErrorNotFound();
+      } else if(jqXHR.status == "404") {
+        writeEmptyNotice();
+      } else {
+        $(".md49ErrMsg h3").text("情報が取得できませんでした");
+        $(".md49ErrMsg p").text("お手数ですが、ページを更新してください");
+        $(".md49ErrMsg").show();
+      }
+      removeDammyHeight();
+      resizeForIpad();
+    }
+  }).always(function(data, jqXHR, textStatus, error){
+    if(maxCnt == TOP_INIT_MAX_DISPLAY){
+      if(param == ''){
+        $('.md49NoticeMore a').attr('href', '/notice/');
+      } else {
+        $('.md49NoticeMore a').attr('href', '/notice/?' + param);
+      }
+    }
+  });
+}
+
+function writeErrorNotFound(){
+  $(".Md24Error").show();
+  $(".md49Content").css("display","none");
+}
+
+function resizeForIpad(){
+    var cnt = $(".md49Content");
+    var spacer = $(".md49Content > .FnCnrCnt");
+    if($(".Md24Error").css("display") != "none"){
+      cnt = $(".Md24Error");
+      spacer = $(".Md24Error > .FnCnrCnt");
+    }
+    var ua = navigator.userAgent.toLowerCase();
+    var isTablet = (ua.indexOf('android') > 0 && ua.indexOf('mobile') == -1) || (ua.indexOf('ipad') > -1);
+
+    function resize(){
+      if(1024 <= screen.height && isTablet){
+        var minHeight = 900;
+        if(  cnt.outerHeight(true) < minHeight){
+          cnt.css("height", minHeight )
+        }
+      }
+      if(isTablet && $(window).widrh() > 767){
+        var pageWidth = 1280;
+        $('meta[name=viewport]').attr("content", "width=" + pageWidth + ", maximum-scale=1.0");
+      }
+    };
+    var timer = false;
+    $(window).on("resize",function() {
+      if (timer !== false) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(function() {
+        resize();
+      }, 200);
+    }).trigger('resize');
+}
+
+function removeDammyHeight(){
+  $('.ExDammyHeight').removeClass('ExDammyHeight');
+}
+
+// 取得したお知らせ一覧が0件の際に表示するメッセージ
+function writeEmptyNotice(){
+  var nt = '';
+  nt +='<p>該当のお知らせはありません。</p>\n';
+  $("#FnViewNoticeList").append(nt);
+  $('#FnViewNoticeList').css('height','auto');
+  if (location.pathname.replace( /index.html/g , "" ).indexOf('/notice/') != -1 ){
+    checkNoticeMoreBtn();
+  }
+}
+
+// [お知らせ一覧]もっと見るボタンを隠すか判定
+function checkNoticeMoreBtn(){
+  $('#FnViewNoticeList li:visible').removeClass('ExLast');
+  $('#FnViewNoticeList li:visible:last').addClass('ExLast');
+  if($('#FnViewNoticeList li.ExHidden').length == 0){
+    $('.FnNoticeMore').hide();
+  }
+}
+
+// 実行
+$(function(){
+  // [TOP]タブ切り替え時、お知らせ一覧の更新
+  $('.FnNoticeTabBtn li').on('click', function(){
+    var param = 'category=' + $(this).attr('id');
+    if(typeof $(this).attr('id') === 'undefined'){
+      param = '';
+    }
+    $('.FnNoticeTabBtn li').removeClass('active');
+    $(this).addClass('active');
+    writeNoticeList(param);
+  });
+
+  // [TOP,お知らせ一覧]セレクトボックス変更時、お知らせ一覧の更新
+  $('.FnNoticeSelectBox').on('change', function(){
+    var selected = $('.FnNoticeSelectBox').val();
+    if(location.pathname.replace( /index.html/g , "" ) == '/' || location.pathname.replace( /index.html/g , "" ) == '/desk/'){
+      if(selected == ''){
+        $('.md49NoticeHead li:first').trigger('click');
+      } else {
+        $('#' + selected).trigger('click');
+      }
+    } else if (location.pathname.replace( /index.html/g , "" ).indexOf('/notice/') != -1 ){
+      if(selected == ''){
+        location.href = $('.md49NoticeHead a:first')[0];
+      } else {
+        location.href = $('#' + selected + ' a')[0];
+      }
+    }
+  });
+
+  // [お知らせ一覧]もっと見る押下時、お知らせの追加表示
+  $('.FnNoticeMore').on('click', function(){
+    $('#FnViewNoticeList li.ExHidden').each(function(index){
+      var MORE_SHOW = 20;
+      if(index >= MORE_SHOW){
+        return;
+      }
+      $(this).removeClass('ExHidden');
+    });
+    checkNoticeMoreBtn();
+  });
+
+  // [TOP]お知らせ初期表示
+  //PC
+  $('.FnNoticeTabBtn li:first').trigger('click');
+  //SP
+  $('.FnNoticeSelectBox').val("");
+
+  // [お知らせ一覧]お知らせ初期表示
+  $(document).ready(function() {
+    if(location.pathname.replace( /index.html/g , "" ).indexOf('/notice/') != -1 ){
+      //urlからパラメタを取得
+      var param = location.search.substring(1);
+      //URL不正入力判定
+      if(param != "" && param.split("=")[0] != "category"){
+        writeErrorNotFound();
+        return;
+      }
+      writeMetaInfo(param);
+
+      if(param == ''){
+        $('.md49NoticeHead li:first').addClass('active');
+      } else if(param){
+        $('.FnNoticeSelectBox').val(param.split("=")[1]);
+        $('#' + param.split("=")[1]).addClass('active');
+      }
+      writeNoticeList(param);
+    }
+  });
+});

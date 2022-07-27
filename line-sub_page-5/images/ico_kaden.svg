@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 104 104">
+    <defs>
+        <linearGradient id="tbm5otwtma" x1="58.625%" x2="41.374%" y1="-11.432%" y2="119.103%">
+            <stop offset="0%" stop-color="#00FF42"/>
+            <stop offset="100%" stop-color="#A3FF00"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g transform="translate(-774 -5756) translate(241 5636) translate(533 120)">
+                    <rect width="54" height="82" x="5" y="22" fill="#05D686" opacity=".57" rx="8"/>
+                    <rect width="54" height="104" x="45" fill="url(#tbm5otwtma)" opacity=".36" rx="8"/>
+                    <path fill="#FFF" fill-rule="nonzero" d="M98.985 42.762L99.016 45.262 59.515 45.75 59.485 43.25zM90 16.75c.647 0 1.18.492 1.244 1.122l.006.128v14c0 .69-.56 1.25-1.25 1.25-.647 0-1.18-.492-1.244-1.122L88.75 32V18c0-.69.56-1.25 1.25-1.25zM90 54.75c.647 0 1.18.492 1.244 1.122l.006.128v14c0 .69-.56 1.25-1.25 1.25-.647 0-1.18-.492-1.244-1.122L88.75 70V56c0-.69.56-1.25 1.25-1.25zM32 50c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16zm0 2.5c-7.456 0-13.5 6.044-13.5 13.5S24.544 79.5 32 79.5 45.5 73.456 45.5 66 39.456 52.5 32 52.5z"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

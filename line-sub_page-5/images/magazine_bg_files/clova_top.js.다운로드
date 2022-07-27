@@ -1,0 +1,16 @@
+$(function(){
+  setBannerPosition();
+})
+
+function setBannerPosition(){
+  var topDistance = $('.FnLpFirstView').height() - ($('.FnFollowingImg').height() / 2);
+  var btmDistance = $('.FnLpFirstView').height() + ($('.FnFollowingImg').height() / 2);
+  var footerHeight = $('.FnFooter').height();
+  $('.FnFollowingImg').show();
+  //画面の高さ取得
+  if($(window).height() > btmDistance + footerHeight ){
+    $('.FnFollowingImg').css({'top':topDistance,'bottom':''});
+  }else{
+    $('.FnFollowingImg').css({'top':'','bottom':'75px'});
+  }
+}

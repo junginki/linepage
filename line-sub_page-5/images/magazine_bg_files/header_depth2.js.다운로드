@@ -1,0 +1,530 @@
+function header_adjust() {
+    var val;
+    if($("#FnTop").length > 0 || $("#FnCampaign").length > 0 || $("#FnBlog").length > 0 || $("#FnEvent").length > 0 || $("#FnNotice").length > 0) {
+      if($(window).width() < 768){
+        $(".FnSubNav").show();
+        $(".FnSubNavColor").show();
+        $('.FnSubNavToggle').show();
+        $(".lyHeaderTop").css({position:"static",width:"100%"});
+      }else{
+        setPaddingTopPC();
+      }
+      if($("#FnTop").length > 0){
+        $(".FnLogo").css({"pointer-events": "none"});//TOPの場合のみ処理させる
+      }
+    }
+    if($(window).width() > 767){
+
+      if($("body").attr("id")){
+        if($("#FnTop").length > 0 || $("#FnNotice").length > 0 || $("#FnCampaign").length > 0  || $("#FnBlog").length > 0  || $("#FnEvent").length > 0 ){
+          val = 0;
+        }else {
+          val = $(".FnSubNav").outerHeight();
+        }
+      }
+    }else{
+      if($(".lyHeaderTop").length > 0){
+        val = $(".lyHeaderTop").innerHeight();
+      }else{
+        val = 0;
+      }
+      if($(".FnSubNavToggle:visible").length > 0){
+        val = val + $(".FnSubNavToggle:visible").height();
+      }
+    }
+    $(".LyDrawerContent").css({"padding-top": val + "px"})
+}
+function setPaddingTopPC(){
+  $(window).on("scroll",function(){
+    if($(window).scrollTop() > 0){
+      $(".lyHeaderTop").css({
+        position:"fixed",
+        width:"calc(100% + " +  $(window).scrollLeft() + "px)",
+        left: - $(window).scrollLeft()
+      })
+    }else{
+      $(".lyHeaderTop").css({position:"static",width:"100%"});
+    }
+  })
+
+  $(".FnSubNavColor").hide();
+  $(".FnSubNavToggle").css({'cssText':'display:none !important'});
+}
+function setScrollPosition(txetArray){
+  var href;
+  var target;
+  var headerHeight = 0;
+  var isHeaderHide = $(".lyHeaderTop").css('display') == 'none';
+  var isPc = $(window).width() > 767;
+  href = "#" + txetArray[txetArray.length-1];
+  target = $(href == "#" || href == "" ? 'html' : href);
+  if($("#FnClovaAi").length || $("#FnClovaAi-1").length){
+    if(!isHeaderHide && !isPc ){
+      headerHeight = $(".lyHeaderTop").outerHeight();
+    }
+  }else if($("#FnEkycDetail").length || $("#FnAiCallPnp").length){
+    headerHeight = $(".FnSubNavToggle:visible").innerHeight();
+  }else{
+    if($(".FnSubNavToggle:visible").length > 0){
+      if (isPc){//PCならサブナビ分の高さを指定
+        headerHeight = $(".FnSubNavToggle:visible").innerHeight();
+      }else{//SPなら
+        if(isHeaderHide){//下に移動するとき
+          headerHeight = $(".FnSubNavToggle:visible").outerHeight();
+        }else{//上に移動するとき
+          headerHeight = $(".FnSubNavToggle:visible").outerHeight() + $(".lyHeaderTop").outerHeight();
+        }
+      }
+    }
+  }
+  var position = target.offset().top-headerHeight; //ヘッダの高さ分位置をずらす
+  $("html, body").animate({scrollTop:position}, 550, "swing");
+}
+
+!function(n, e) {
+    var t, o = n.jQuery || n.Cowboy || (n.Cowboy = {});
+    o.throttle = t = function(n, t, a, i) {
+        function r() {
+            function o() {
+                l = +new Date,
+                a.apply(d, u)
+            }
+            function r() {
+                s = e
+            }
+            var d = this
+              , c = +new Date - l
+              , u = arguments;
+            i && !s && o(),
+            s && clearTimeout(s),
+            i === e && c > n ? o() : t !== !0 && (s = setTimeout(i ? r : o, i === e ? n - c : n))
+        }
+        var s, l = 0;
+        return "boolean" != typeof t && (i = a,
+        a = t,
+        t = e),
+        o.guid && (r.guid = a.guid = a.guid || o.guid++),
+        r
+    }
+    ,
+    o.debounce = function(n, o, a) {
+        return a === e ? t(n, o, !1) : t(n, a, o !== !1)
+    }
+}(this);
+!function(n, e, t, o) {
+    function a(e, t) {
+        this.element = e,
+        this.settings = n.extend({}, r, t),
+        this._defaults = r,
+        this._name = i,
+        this.init()
+    }
+    var i = "NFAL_drawerMenu"
+      , r = {
+        header_class: ".FnHeader",
+        page_class: ".FnDrawerContent",
+        menu_class: ".FnDrawerNav",
+        menu_btn_class: ".FnDrawerNavBtn",
+        overlay_class: ".FnDrawerOverlay",
+        drawer_width: 250
+    };
+    n.extend(a.prototype, {
+        init: function() {
+            // n(".FnHeader").on("touchmove.noScroll", function(n) {
+            //     n.preventDefault()
+            // }),
+            this.main()
+        },
+        main: function() {
+            function t(n) {
+                l || i.hide()
+            }
+            var o = n(this.settings.header_class)
+              , a = n(this.settings.page_class)
+              , i = n(this.settings.overlay_class)
+              , r = n(this.settings.menu_class)
+              , s = n(this.settings.menu_btn_class)
+              , l = (this.settings.drawer_width,
+            !1)
+              , d = 0
+              , c = e.navigator.appVersion.toLowerCase();
+            a.on("webkitTransitionEnd", t),
+            a.on("mozTransitionEnd", t),
+            a.on("oTransitionEnd", t),
+            a.on("msTransitionEnd", t),
+            a.on("transitionend", t),
+            n(this.settings.menu_btn_class).add(this.settings.overlay_class).on("click", function(e) {
+                e.preventDefault(),
+                l ? (l = !1,
+                n("html,body").css({
+                    height: "auto"
+                }),
+                r.off("touchmove.noScroll"),
+                i.off("touchmove.noScroll"),
+                r.removeClass("ExActive"),
+                o.removeClass("ExActive"),
+                a.removeClass("ExActive"),
+                s.removeClass("ExActive"),
+                i.removeClass("ExActive"),
+                n("html,body").scrollTop(d),
+                c.indexOf("msie 9.") != -1 && setTimeout(function() {
+                    i.hide()
+                }, 200)) : (l = !0,
+                d = Math.max(n("html").scrollTop(), n("body").scrollTop()),
+                n("html,body").css({
+                    height: "100%"
+                }),
+                a.scrollTop(d),
+                r.on("touchmove.noScroll", function(n) {
+                    n.stopPropagation()
+                }),
+                i.on("touchmove.noScroll", function(n) {
+                    n.preventDefault()
+                }),
+                r.addClass("ExActive"),
+                o.addClass("ExActive"),
+                a.addClass("ExActive"),
+                s.addClass("ExActive"),
+                i.show(),
+                setTimeout(function() {
+                    i.addClass("ExActive")
+                }, 10))
+            })
+        }
+    }),
+    n.fn[i] = function(e) {
+        return this.each(function() {
+            n.data(this, "plugin_" + i) || n.data(this, "plugin_" + i, new a(this,e))
+        })
+    }
+    ,
+    n(function(n) {
+        n(".FnDrawerNavBtn").length > 0 && n("body").NFAL_drawerMenu()
+    })
+}(jQuery, window, document),
+
+$(window).on("load resize", function() {
+  if ( $(window).width() < 768 ) {
+    $(".md15Nav.FnGnavCurrent li.ExCurrent").css({
+      display: "block",
+      opacity: "1"
+    });
+    $(".md15Nav.FnGnavCurrent li.ExCurrent").css({
+      display: "inline-block",
+      opacity: "1"
+    })
+  }
+  header_adjust();
+  $('.md15Nav2MyAccount').show();
+}),
+$(window).on('load', function() {
+  var txetArray = location.href.split('#');
+  if(txetArray.length > 1){
+    setScrollPosition(txetArray);
+  }
+}),
+$(function() {
+    var n = $(window).width()
+      , e = $(window).scrollTop()
+      , t = "onwheel"in document ? "wheel" : "onmousewheel"in document ? "mousewheel" : "DOMMouseScroll"
+      , o = !1;
+    $(window).on("orientationchange", function() {
+        n = $(window).width()
+    }),
+    !( $("#FnTop").length > 0 &&  !($(window).width() < 768) ) ? ($(window).on("orientationchange resize", function() {
+        window_h = $(window).height(),
+        window_w = $(window).width(),
+        $(".LyDrawerOverlay2").hide(),
+        n != window_w && ($(".FnDrawerOverlay2.ExActive").trigger("click"),
+        $(".FnDrawerOverlay.ExActive").trigger("click"))
+    }),
+    $(".FnSubNavChangeStart").get(0) && $(".FnSubNav").addClass("ExBgChanged"),
+    $(window).on("scroll", function() {
+        if (0 == $(window).scrollTop() && (o = !1),
+        !o)
+            if ($(window).width() > 767) {
+                window_h = $(window).height(),
+                window_w = $(window).width();
+                var n = $(".FnHeader").height()
+                  , t = $(window).scrollTop();
+                t > n ? ($(".FnSubNav.Md28PcOnly").css({
+                    position: "fixed",
+                    top: "0",
+                    left: -$(window).scrollLeft()
+                }),
+                $(".FnContactBtn").removeClass("md00Hidden")
+                ) : ($(".FnSubNav.Md28PcOnly").css({
+                    position: "absolute",
+                    top: n + "px",
+                    left: "0"
+                }),
+                $(".FnContactBtn").addClass("md00Hidden")
+                ),
+                $(".FnSubNavChangeStart").get(0) && ($(".FnSubNavColor").addClass("ExTransition"),
+                t < $(".FnHeader").height() ? ($(".FnSubNav").addClass("ExBgChanged"),
+                $(".FnSubNavColor").removeClass("ExTransition")) : $(".FnSubNav").hasClass("ExBgChanged") && ($(".FnSubNav").removeClass("ExBgChanged"),
+                $(".FnSubNavColor").addClass("ExTransition")))
+                ;$(".lyHeaderTop").show();
+            } else {
+                $(".FnSubNavChangeStart").get(0) && $(".FnSubNavColor").removeClass("ExTransition");
+                var a;//スクロール時に非表示する領域の指定
+                if($("#FnTop").length){
+                  //非表示領域の指定なし
+                }else{
+                  a = $(".lyHeaderTop");
+                }
+                var t = $(window).scrollTop();
+                e > t || 0 == e && 0 == t ? $(a).hasClass("ExActive") || $(a).show() : e < t && ($(a).hasClass("ExActive") || t > 30 && $(a).hide()),
+                e = t
+            }
+    }),
+
+    $(window).on("touchstart", function() {
+      if($(window).width() < 768){
+        o = !0;
+      }else{
+        o = !1;
+      }
+      startPos = $(window).scrollTop()
+    }),
+    $(window).on("touchend", function() {
+      if($(window).width() < 768){
+        var n;//スクロール時に非表示する領域の指定
+        if($("#FnTop").length){
+          //非表示領域の指定なし
+        }else{
+          n = $(".lyHeaderTop");
+        }
+        var  e = $(window).scrollTop();
+        startPos > e ? $(n).hasClass("ExActive") || $(n).show() : startPos < e && ($(n).hasClass("ExActive") || e > 30 && $(n).css({
+            display: "none"
+        })),
+        startPos = e
+      }
+    }),
+    $(window).on(t, function() {
+        o = !1
+    })) : ($(".FnSubNav").hide(),
+    $(".FnSubNavToggle").hide(),
+    $(window).on("orientationchange resize", function() {
+        window_w = $(window).width(),
+        n != window_w && ($(".FnDrawerOverlay2.ExActive").trigger("click"),
+        $(".FnDrawerOverlay.ExActive").trigger("click"))
+    }))
+}),
+function(n) {
+    "use strict";
+    function e(n) {
+        function e() {
+            return !w
+        }
+        function l(e) {
+            e = e.originalEvent,
+            w = !1,
+            clearInterval(h),
+            v = !0;
+            var t = e.touches[0];
+            $ = C = t.pageX,
+            g = b = t.pageY,
+            f = n.scrollLeft(),
+            p = n.scrollTop()
+        }
+        function d(e) {
+            e = e.originalEvent,
+            e.preventDefault();
+            var o = e.touches[0];
+            C = o.pageX,
+            b = o.pageY;
+            var a = Math.abs($ - C)
+              , i = Math.abs(g - b);
+            !w && (a > t || i > t) && (w = !0);
+            var r = f + ($ - C)
+              , s = p + (g - b);
+            n.scrollLeft(r),
+            n.scrollTop(s)
+        }
+        function c(e) {
+            e = e.originalEvent,
+            clearInterval(h);
+            var t = e.changedTouches[0];
+            v = !1,
+            F = C - t.pageX,
+            x = b - t.pageY,
+            C = t.pageX,
+            b = t.pageY;
+            var a = f + ($ - C)
+              , i = p + (g - b)
+              , r = n.scrollLeft()
+              , s = n.scrollTop();
+            r > N && r < m ? n.scrollLeft(a) : F = 0,
+            s > S && s < y ? n.scrollTop(i) : x = 0,
+            h = setInterval(u, o)
+        }
+        function u() {
+            if (v)
+                return void clearInterval(h);
+            if (Math.abs(F) < r && Math.abs(x) < r)
+                return w = !1,
+                void clearInterval(h);
+            var e = n.scrollLeft()
+              , t = n.scrollTop();
+            F *= a,
+            x *= a,
+            n.scrollLeft(e + Math.round(Math.min(i, Math.max(-i, F)))),
+            n.scrollTop(t + Math.round(Math.min(i, Math.max(-i, x))))
+        }
+        if (!n.attr(s)) {
+            n.attr(s, 1);
+            var h, v = !1, w = !1, $ = 0, g = 0, f = 0, p = 0, C = 0, b = 0, F = 0, x = 0, N = 0, S = 0, m = (n.get(0).scrollWidth || n.get(0).clientWidth) - n.width(), y = (n.get(0).scrollHeight || n.get(0).clientHeight) - n.height();
+            n.on("click", "a", e),
+            n.on("touchstart", l),
+            n.on("touchmove", d),
+            n.on("touchend touchcancel", c)
+        }
+    }
+    var t = 20
+      , o = 16
+      , a = .98
+      , i = 10
+      , r = 1
+      , s = "data-jquery-overflow-scroll";
+    n.fn.overflowScroll = function() {
+        this.each(function() {
+            e(n(this))
+        })
+    }
+}(jQuery),
+$(function () {
+  $("a[href^='#']").on("click",function(){
+    var txetArray= $(this).attr("href").split('#');
+    setScrollPosition(txetArray);
+    return false;
+  });
+
+});
+
+$(function(){
+    $('.md15Nav2MyAccount>li>a').on('click', function(){
+      if($(this).attr("href").indexOf("#") > -1){
+        if($('.ExClick').length>0){
+            $('.ExClick').removeClass('ExClick');
+        }
+        $(this).addClass('ExClick');
+      }
+    });
+})
+$(function(){
+  var isBanner = true;
+  var cookie = document.cookie.replace(/ /g, '').split(';');
+  // for(var i = 0; i < cookie.length; i++){
+  //   if(cookie[i] == '_headerbanner=1'){
+  //     isBanner = false;
+  //   }
+  // }
+  if(isBanner && $(".lyHeaderBannerAreaWrap").length > 0 ){
+    $(".lyHeaderBannerAreaWrap").show();
+    $(".lyHdBgSbnv").css('top','143px');
+    $(".FnBannerClose").on("click", function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      document.cookie = "_headerbanner=1;path=/;";
+      $(".lyHeaderBannerAreaWrap").remove();
+      $(".lyHdBgSbnv").css('top','62px');
+      setTimeout(function() {
+          $(window).trigger("scroll").trigger("resize");
+      }, 80);
+    })
+  }
+})
+$(function(){
+  $(".FnSpMenuSubMenuToggle").on("click",function(){
+    var elm = $(this).next();
+    if($(this).hasClass("ExOpen")){
+      $(this).removeClass("ExOpen");
+      elm.slideUp(200);
+    }else{
+      $(this).addClass("ExOpen");
+      elm.slideDown(200);
+    }
+  })
+})
+
+$(function(){
+  $('.FnHdBgSbnvIdxMenu').on('click', function(){
+    //押されたサブメニューのリストにアクティブスタイルを付ける
+    $('.FnHdBgSbnvIdxMenu').removeClass("ExActive");
+    $(this).addClass("ExActive");
+    //対応するサブメニューコンテンツを表示する
+    var id = $(this).data("menu2");
+    var elm = $("#" + id);
+    $(".FnHdBgSbnvCnt").removeClass("ExOpen");
+    if(elm.length > 0){
+      if(elm.hasClass('ExOpen')){
+      }else{
+        elm.addClass('ExOpen');
+      }
+    }
+    return false;//アンカーリンクの無効化
+  });
+
+  var toggleCntId;
+  $(".FnHdBgSbnvToggle" ).on("click", function(e) {
+    openBigSubnavi();
+    if(toggleCntId != $(this).data("menu") && $(this).hasClass("FnHdBgSbnvToggle")){
+      toggleCntId = $(this).data("menu");
+      $(".FnHdBgSbnvToggleCntDetail").hide();
+      $("#" + toggleCntId).show();
+    }
+  });
+  $(".FnHdBgSbnvOverlay").on("click", function(e) {
+    closeBigSubnavi();
+  });
+
+  function openBigSubnavi(){
+    if(!$(".FnHdBgSbnvToggleCnt").hasClass("ExOpen")){
+      $(".FnHdBgSbnvToggleCnt").addClass("ExOpen");
+      $(".FnHdBgSbnvToggleCnt , .FnHdBgSbnvOverlay").stop().animate({"opacity": "show"});
+      no_scroll();//common.jsのfunction
+    }
+  }
+  function closeBigSubnavi(){
+    if($(".FnHdBgSbnvToggleCnt").hasClass("ExOpen")){
+      $(".FnHdBgSbnvToggleCnt").removeClass("ExOpen");
+      $(".FnHdBgSbnvToggleCnt , .FnHdBgSbnvOverlay").stop().animate({"opacity": "hide"});
+      return_scroll();//common.jsのfunction
+    }
+  }
+
+  $(window).on("orientationchange resize",function(){
+    //端末を横向き(PC表示)から縦向き（SP表示）に変えた際、BigSubnaviが表示されていたら閉じる
+    if($(window).width() > 767){
+    }else{
+      closeBigSubnavi();
+    }
+
+    //横向きにしたときに拡大しないようにviewportを変更する
+    var isSP = (window.navigator.userAgent.indexOf('iPhone') > 0) || (window.navigator.userAgent.indexOf('iPod') > 0) || (window.navigator.userAgent.indexOf('Android') > 0);
+    var isPortrait = (window.innerHeight > window.innerWidth);
+    if (isSP) {
+      if (isPortrait){
+        $("meta[name='viewport']").attr("content",'width=device-width, maximum-scale=1.0');
+      }else{
+        if($(window).width() > 767){
+          $("meta[name='viewport']").attr("content",'width=1200, initial-scale=1.0');
+        }
+      }
+    }
+  })
+  $(window).on("scroll",function(){
+    $(".FnHdBgSbnvToggleCntDetail").css({
+        left: 50 - $(window).scrollLeft()
+    })
+  });
+  $(window).on("resize",function(){
+    var val = window.innerWidth < $(".FnHdBgSbnvToggleCntDetail").outerWidth() ? "0":"auto";
+    $(".FnHdBgSbnvToggleCntDetail").css({
+        margin: val
+    })
+  });
+
+})

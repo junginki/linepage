@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="106" height="70" viewBox="0 0 106 70">
+    <defs>
+        <linearGradient id="1w4qak4wua" x1="10.281%" x2="88.331%" y1="7.833%" y2="87.339%">
+            <stop offset="0%" stop-color="#00FF42"/>
+            <stop offset="100%" stop-color="#A4FF00"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <path d="M0 0H106V70H0z" transform="translate(-1047 -139) translate(930 102) translate(117 37)"/>
+                    <g>
+                        <g transform="translate(-1047 -139) translate(930 102) translate(117 37) translate(9 5) translate(0 .733)">
+                            <ellipse cx="29.872" cy="30.587" fill="url(#1w4qak4wua)" opacity=".36" rx="29.872" ry="30.587"/>
+                            <path fill="#05D686" d="M84 31.267C84 13.998 70.329 0 53.464 0 36.6 0 22.93 13.998 22.93 31.267c0 17.268 13.67 31.266 30.535 31.266.124 0 .245-.008.368-.01v.01h29.8l-8.764-8.974C80.502 47.887 84 39.996 84 31.267" opacity=".57"/>
+                            <text fill="#FFF" stroke="#FFF" stroke-width=".5" font-family="Volte-Semibold, Volte" font-size="17" font-weight="500" letter-spacing="1.874">
+                                <tspan x="35.491" y="36.767">Q</tspan> <tspan x="50.133" y="36.767" font-size="15" letter-spacing="1.353">&amp;</tspan> <tspan x="61.311" y="36.767">A</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

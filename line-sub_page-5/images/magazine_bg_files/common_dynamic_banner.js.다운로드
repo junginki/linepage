@@ -1,0 +1,68 @@
+// 動的バナー
+
+// 動的バナーのカルーセル作成
+function createSwiper(){
+  var swiperDynamicBanner = new Swiper('.FnDynamicBanner .swiper-container', {
+    mode:'horizontal',
+    loop: true,
+    slidesPerView: 1,
+    initialSlide:0,
+    autoplay:4000,
+    speed: 600,
+    autoplayDisableOnInteraction: false,
+    centeredSlides : true,
+    spaceBetween: 0,
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    paginationType:'bullets',
+    paginationAsRange: true,
+  });
+}
+
+// APIからデータを取得してバナーに整形
+function writeDynamicBanner(){
+  var jsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+
+  $.ajax({
+    type: 'GET',
+    url: jsHost + location.hostname + '/webapi/banner/list',
+  }).done(function(data) {
+    if(!data){
+      $(".FnDynamicBanner").hide();
+      return;
+    }
+    var newData = JSON.parse(data);
+    if(newData.bannerList.length == 0){
+      $(".FnDynamicBanner").hide();
+      return;
+    }
+
+    for(var i = 0; i < newData.bannerList.length; i++){
+      var nt = '';
+      if(newData.bannerList[i].viewTabType){
+        newData.bannerList[i].viewTabType = "_blank";
+      }else{
+        newData.bannerList[i].viewTabType = "";
+      }
+
+      nt +='<li class="swiper-slide">\n';
+      nt +=' <a href="' + newData.bannerList[i].url + '" target="' + newData.bannerList[i].viewTabType + '">\n';
+      nt +='  <img src="' + jsHost + location.hostname + newData.bannerList[i].imagePathPc + '" alt="' + newData.bannerList[i].captionName + '" class="Md28PcOnly" />\n';
+      nt +='  <img src="' + jsHost + location.hostname + newData.bannerList[i].imagePathSp + '" alt="' + newData.bannerList[i].captionName + '" class="Md28SpOnly" />\n';
+      nt +=' </a>\n';
+      nt +='</li>\n';
+      $(".FnDynamicBanner").find(".swiper-wrapper").append(nt);
+    }
+
+    if(newData.bannerList.length > 1){
+      createSwiper();
+    }
+  }).fail(function(jqXHR, textStatus, error) {
+    $(".FnDynamicBanner").hide();
+  });
+}
+
+// 実行
+$(function(){
+  writeDynamicBanner();
+});

@@ -1,0 +1,562 @@
+@charset "UTF-8";
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#wrap{
+  margin: 0 auto;
+  >header{
+    >
+    .nav_container{
+      position: fixed;
+      top: 0;
+      // left: 0;
+      // right: 0;
+      width: 100%;
+      background-color: #fff;
+      >.nav_top{
+        display: flex;
+        justify-content: space-between;
+        height: 52px;
+        padding: 15px 100px;
+        line-height: 52px;
+        background-color: rgba(255, 255, 255, 0.071);
+        z-index: 9999;
+        border: 1px solid #DBDCDD;
+        h1.logo{
+          display: block;
+          width: 185px;
+          text-indent: -9999px;
+          line-height: 67px;
+          background-image: url(./../images/clova_logo.png);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center center; //로고위치는 line-height가 먹지 않기 때문에 백포지션 센터
+          >a{
+            display: block;
+            height: 52px;
+            line-height: 52px;
+          }
+        }//end of h1.logo
+        ul.gnb{
+          display: flex;
+          >li{
+            padding: 0 15px;
+            font-weight: 600;
+            font-size: 15px;
+            >a{
+              display: block;
+              color: #222;
+              &:hover{
+                color: #05d686;
+              }
+      
+            }
+          }
+        }//end of ul.gnb
+        ol.join{
+          display: flex;
+          >li{
+            padding: 0 15px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 30px;
+            &:nth-child(1){
+              background-color: #F1F4F7;
+              margin-right: 15px;
+            }
+            &:nth-child(2){
+              background-color: #61D38D;
+              >a{
+                color: #fff;
+              }
+            }
+          }
+        }//end of ol.join
+      }//end of .nav_top
+    }//end of .nav_container
+
+
+div.visual{
+  width: 100%;
+  height: 700px;
+  background-image: url(./../images/img_visual-pc.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  >
+  .visual__container{
+    margin: 0 auto;
+    padding-top: 300px;
+    >
+    .visual__p{
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.7;
+      text-align: center;
+      }
+      .visual__inquiry{
+      margin: 0 auto;
+      margin-top: 40px;
+      font-weight: 500;
+      font-size: 18px;
+      border-radius: 27px;
+      width: 304px;
+      text-align: center;
+      background-color: #61D38D;
+      >a{
+        display: block;
+        color: #fff;
+        padding: 19px 0;
+      }
+      }
+  }//end of visual__container
+  
+}//end of .visual
+  }//end of header
+  section{
+    >h2{
+      text-indent: -9999px;
+    }
+    .txt-h3{
+padding: 30px 0;
+font-size: 28px;
+font-weight: bold;
+text-align: center;
+    }// txt-h3공통
+
+    .txt-h4{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #4f5f6d;
+    }//txt-h4 공통
+
+    .txt-h5{
+      padding: 15px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #4f5f6d;
+    }//txt-h5 공통
+    .txt-1{
+      color: #4f5f6d;
+      font-size: 16px;
+      text-align: center;
+    }// .txt-1 공통
+
+    .txt-morethan_1{
+    display: block;
+    padding: 30px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #05d686;
+    }
+    .article_1{
+      >.bg-ai{
+        margin: 0 auto;
+        width: 937px;
+        height: 600px;
+        text-indent: -9999px;
+        background-image: url(./../images/img_ai_figure.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      }//end of .article_1
+
+>.article_2{
+  margin-bottom: 150px;
+>h4{
+  text-indent: -9999px;
+}
+.article_2__container_1{
+  padding: 0 150px;
+  >ul.notice-board{
+    border-bottom: 3px solid #CBCFD2;
+>li{
+    color: #4f5f6d;
+    font-weight: 700;
+    font-size: 18px;
+}
+  }//end of ul.notice-board
+  >ol{
+    >li{
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 0.5px solid #CBCFD2;
+    >span{
+      margin-right: 100px;
+      color: #4f5f6d;
+      opacity: .3;
+    }
+    }
+  }//end of ol
+}//end of .article_2__container_1
+}//end of article_2
+.article_3{
+>.point-container{
+  display: flex;
+  padding: 0 150px;
+  margin-top: 50px;
+  .img-point{
+    height: 350px;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  >.img-point_1{
+    width: 1000px;
+
+    background-image: url(./../images/img_point1.jpg);
+  }
+  .img-point_2{
+    width: 1200px;
+    background-image: url(./../images/img_point2.jpg);
+  }
+  .img-point_3{
+    width: 1200px;
+    background-image: url(./../images/img_point3.jpg);
+  }
+  .img-point_4{
+    width: 1600px;
+    background-image: url(./../images/img_point4.jpg);
+  }
+  .point-txt_box{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    padding: 0 50px;
+    >.point-color{
+    font-size: 18px;
+    font-weight: 600;
+    color: #05d686;
+    }
+    >.txt-1{
+      text-align: left;
+    }
+  }//end of .point-txt_box
+}//end of .point-container
+.point-container_2{
+  flex-direction: row-reverse;
+}
+.point-container_4{
+  flex-direction: row-reverse;
+}
+}//end of .article_3
+.article_4{
+  background-color: #F3F6F9;
+  .txt-h4{
+    text-align: center;
+  }//공통
+  .txt-green{
+    color: #05d686;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+  }//공통
+  >h3{
+    color: #4f5f6d;
+    line-height: 70px;
+  }
+  .solutions{
+    padding: 0 170px;
+    >h4{
+      text-align: center;
+    }
+    
+    .solutions__container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 50px;
+>.solutions_box{
+display: flex;
+flex-direction: column;
+width: 570px;
+height: 100%;
+background-color: #fff;
+border-radius: 30px;
+.txt-1{
+  text-align: left;
+}
+.solutions_txt{
+  padding: 0 30px;
+  line-height: 25px;
+}
+>.img_solutions{
+  display: block;
+  height: 275px;
+  >img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius:30px ;
+    border-top-right-radius:30px ;
+  }
+}//end of .img_solutions
+}//end of .solutions_box
+    }//end of .solutions__container
+  }//end of .solutions
+  .products_container{
+    margin-top: 100px;
+    padding: 0 150px;
+    .txt-h5{
+      text-align: center;
+    }
+    >.products_container__box{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      margin-top: 50px;
+      .clova_bg{
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        .img_clova{
+          width: 70px;
+          height: 60px;
+          margin: 0 auto;
+        }
+      }
+    }//end of .products_container__box 공통
+    .products_container__box-2{
+      .clova_bg{
+        width: 200px;
+      }
+    }
+    .products-fot_txt{
+      padding: 50px 0;
+    }
+  }//end of .products_container
+  
+}//end of .article_4
+.article_5{
+  padding-bottom: 50px;
+  >h4{
+    padding-top: 50px;
+  }
+  >.assistant_container{
+    display: flex;
+    margin: 0 auto;
+    padding: 0 200px;
+    >.assistant_img{
+      width: 100%;
+      color: rgba(79,95,109,.6);
+      font-weight: 400;
+      font-size: 16px;
+      text-align: center;
+    }
+  }//end of .assistant_container
+  .article_5__rounbd-box{
+    >p{
+      width: 220px;
+      margin: 0 auto;
+      margin-top: 60px;
+      padding: 19px 0;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      border: solid 1px rgba(79,95,109,.2);
+      border-radius: 26px;
+      >a{
+      display: block;
+      color: #4f5f6d;
+      }
+    }
+  }//end of .article_5__rounbd-box
+}//end of .article_5
+.article_6{
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(120deg,#00d0b6 26%,#00cf9c 51%,#00cf80 74%);
+  .inquiry_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  padding: 50px 100px 50px 100px;
+    margin: 0 auto;
+    >.inquiry_container__box{
+      width: 450px;
+      height: 250px;
+      padding: 40px 80px;
+      background-color: #fff;
+      border-radius: 18px;
+      >p.img_support{
+        width: 106px;
+        height: 70px;
+        margin: 0 auto;
+        >img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      >h5{text-align: center;}
+.inquiry_round{
+  margin: 0 auto;
+  margin-top: 30px;
+  font-weight: 500;
+  font-size: 18px;
+  width: 204px;
+  text-align: center;
+  background-color: #61D38D;
+  border-radius: 27px;
+  >a{
+    display: block;
+    color: #fff;
+    padding: 14px 0;
+  }
+}
+    }//end of .inquiry_container__box
+  }//end of .inquiry_container
+}//end of .article_6
+.article_7{
+>.registration_conainer{
+  display: flex;
+>.registration_conainer__box-1{
+  width: 50%;
+  height: 500px;
+  background-image: url(./../images/img_mailmagazine_bg.png);
+  background-size: 100% 500px;
+  background-repeat: no-repeat;
+  >p{
+    &:nth-child(1){
+    margin-top: 25%;
+      color: #fff;
+      font-weight: 600;
+      font-size: 40px;
+      text-align: center;
+    }
+    &:nth-child(2){
+      color: #fff;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.38;
+      text-align: center;
+    }
+  }
+
+}//end of .registration_conainer__box-1
+.registration_conainer__box-2{
+  width: 50%;
+  background-color: #f2f6f9;
+  >form{
+    margin-top: 150px;
+    > fieldset {
+      width: 400px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      background-color: #fff;
+      border: 1px solid #dedede;
+      border-radius: 20px;
+      > legend {
+        display: block;
+        margin-left: 10px;
+        padding: 0 5px;
+      }
+      >ul{
+        >li{
+          >input{
+            border: none;
+          }
+          .info{
+            display: none;
+          }
+        }//end of li
+      }//end of ul
+    }//end of fieldset
+    .enter_round{
+      margin: 0 auto;
+      margin-top: 30px;
+      font-weight: 500;
+      font-size: 18px;
+      width: 204px;
+      text-align: center;
+      background-color: #61D38D;
+      border-radius: 27px;
+      >a{
+        display: block;
+        color: #fff;
+        padding: 14px 0;
+      }
+    }
+  }//end of form
+  form input[type=text]:focus + .info,
+  form input[type=email]:focus + .info {
+	display: block;
+	color: red;
+	text-indent: 6px;
+	font-size: 12px;
+}//end of form input
+form input[type=email]:focus,
+form input[type=text]:focus,
+form input[type=name]:focus {
+	background-color: lightgoldenrodyellow;
+}
+}//end of .registration_conainer__box-2
+}//end of .registration_conainer
+}//end of .article_7
+.article_8{
+  padding: 50px 200px;
+>h4{
+  margin-bottom: 50px;
+  text-align: center;
+}
+.line-sns_container{
+  display: flex;
+  justify-content: space-around;
+  >p{text-align: center;}
+}
+}//end of .article_8
+  }//end of section
+  footer{
+    .fot-gnb{
+      width: 100%;
+      height: 500px;//임시 꼭 삭제하기
+      padding: 50px 100px;
+      background-color: #4f5f6d;
+        >.fot-logo{
+          >a{
+            display: block;
+            width: 121px;
+            height: 19px;
+            margin-bottom: 15px;
+
+            >img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }//end of .fot-logo
+        .fot-txt_1{
+          margin-bottom: 32px;
+          color: rgba(255,255,255,.8);
+          font-size: 16px;
+          font-weight: 600;
+        }
+        div.fot-container{
+          display: flex;
+          justify-content: space-around;
+          ul.fot-service{
+            >li{
+              margin-bottom: 20px;
+              >a{
+                display: block;
+                color: rgba(255,255,255,.8);
+                font-size: 16px;
+                font-weight: 600;
+                >span{
+                  color: rgba(255,255,255,.6);
+                  font-weight: 400;
+                  font-size: 11px;
+                }
+              }
+            }
+                    }//end of ul.fot-service
+        }//end of div.fot-container
+       
+    }//end of  .fot-gnb
+  }//end of footer
+}//end of #wrap

@@ -1,0 +1,108 @@
+var prtcl = "https:" == document.location.protocol ? "https://" : "http://";
+var eventListData;
+var parseJson = function(jsonString) {
+  var converted = convertNl(jsonString);
+  return JSON.parse(converted);
+};
+
+var convertNl = function(jsonString) {
+  return jsonString
+    .replace(/(\\r\\n)/g, '<br>')
+    .replace(/(\\r)/g,   '<br>')
+    .replace(/(\\n)/g,  '<br>');
+};
+
+$(function() {
+  //ejsと競合しないよう、 変数表記<％ ％>を<? ?>に変更します。
+  _.templateSettings = {
+    evaluate    : /\<\?([\s\S]+?)\?\>/g,
+    escape      : /\<\?\-([\s\S]+?)\?\>/g,
+    interpolate : /\<\?\=([\s\S]+?)\?\>/g
+  };
+
+  getEventList().done(function(result){
+    eventListData = result.eventList;
+    showEventList(eventListData);
+  }).fail(function(result){//エラー処理
+    if(location.hostname == "localhost"){  //ローカル環境用スタブ
+      eventListData = dummyDataEventList.eventList;
+      showEventList(eventListData);
+    }
+  })
+
+  function getEventList(){
+    return $.ajax({
+      type: 'GET',
+      url: prtcl + location.hostname + "/webapi/event/list",
+      async: false,
+      dataType: 'json'
+    })
+  }
+
+  function showEventList(resData){
+    var contentsList = [];
+    resData = parseJson(JSON.stringify(resData));
+    $.each(resData ,function(i,v){
+      if(v.status == 1){
+        v.eventStartDatetime = v.eventStartDatetime.replace(/-/g , ".").substring(0,v.eventStartDatetime.indexOf(" "));
+        contentsList.push(v);
+      }
+    })
+    if(contentsList.length > 0){
+      drawEventList(contentsList);
+      setEventSwiper();
+      if(contentsList.length < 4){
+        $(".swiper-button-prev,.swiper-button-next").hide();
+        if(contentsList.length == 1){
+          $("#eventSwiperList").addClass("ExSingleItm");
+          $(".FnEvtLstItm").addClass("ExSingleItm");
+        }
+      }
+    }else{
+      $('.FnEvtLsMn').hide();
+    }
+  }
+
+});
+
+function drawEventList(dataList){
+  var tmpl = _.template($("#tp_eventSwiperList").text());
+  $("#eventSwiperList").append( tmpl({"dataList": dataList}) );
+}
+
+function setEventSwiper(){
+  if($(".FnEvtLstItm").length > 1) {
+    var swiperChatobotView = new Swiper('.FnEventSwipper.swiper-container', {
+      paginationClickable: true,
+      paginationType:'bullets',
+      speed: 600,
+      mode:'horizontal',
+      slidesPerView: 3.58,
+      spaceBetween: 30,
+      centeredSlides: false,
+      slidesOffsetBefore: 130,
+      slidesOffsetAfter: 130,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      breakpoints: {
+        767: {
+          loop: false,
+          slidesPerView: 1.15,
+          spaceBetween: 20,
+          slidesOffsetBefore: 18,
+          slidesOffsetAfter: 18,
+        },
+        374: {
+          loop: false,
+          slidesPerView: 1.1,
+          spaceBetween: 6,
+          slidesOffsetBefore: 10,
+          slidesOffsetAfter: 10,
+        },
+      },
+      autoplayDisableOnInteraction: false,
+      preventClicks: false,
+      preventClicksPropagation: false
+    });
+  }
+}

@@ -1,0 +1,831 @@
+@charset "UTF-8";
+
+body{
+  overflow-x:hidden; 
+  overflow-y:auto;
+}
+#wrap{
+  margin: 0 auto;
+  height: 100%;
+  
+  >header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    // left: 0;
+    // right: 0;
+    background-color: #fff;
+    >
+    .header_top{
+      //헤더 슬라이드식 네비게이션 bar만들경우 header안에 hader_top 박스를 만들어주면 유용하다.
+      display: flex;
+      justify-content: space-between;
+      width: 95%;
+      padding: 30px 40px;
+      background-color: #fff;
+      >h1{
+        position: absolute;
+        display: inline-block;
+        width: 122px;
+        text-indent: -9999px;
+        background-image: url(./../images/logo.svg);
+        background-repeat: no-repeat;
+        >a{
+          display: block;
+          height: 36px;
+        }
+      }
+      >ul.gnb{
+        display: flex;
+        margin-left: 162px;
+        .gnb__li{
+          display: inline-block;
+          padding: 7px 0 5px;
+          margin-left: 30px;
+          color: #111;
+          font-weight: 700;
+          font-size: 17px;
+          line-height: 1.48;
+          cursor: pointer;
+          >ol.lnb{
+            display: none;
+            margin-top: 20px;
+            >li{
+              color: rgba(238, 238, 238, 0.183);
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 2.1;
+              >a{
+                &:hover{
+                  color: #57BC66;
+                }
+              }
+            }
+          }//end of ol.lnb
+        }//end of .gnb__li
+        
+      }//end of ul.gnb
+      .franchisee{
+        display: flex;
+        >p{
+          display: inline-block;
+          width: auto;
+          height: 40px;
+          padding: 10px 16px 8px;
+          color: #111;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 1.5;
+          &:nth-child(2){
+            height: 25px;
+            border: 1px solid #e3e5ec;
+            border-radius: 5px;
+          }
+        }
+      }//end of .franchisee
+    }///end of .header_top
+  }//end of header
+  >
+  section{
+
+    .txt_read-more{
+      color: #111;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.48;
+      text-align: center;
+      >a{
+        display: block;
+        width: 155px;
+        height: 50px;
+        margin: 0 auto;
+        color: #111;
+        line-height: 50px;
+      }
+    }//end of .txt_read-more 자세히 보기(공통)
+    .txt_h4{
+      color: #111;
+      font-weight: 700;
+      font-size: 52px;
+      line-height: 1.17;
+      text-align: center;
+    }//end of .txt_h4 (공통)
+    .txt_h5{
+      color: #111;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.17;
+      text-align: center;
+    }//end of .txt_h5 (공통)
+    .convenient_function__ul,.payment-service__ul{
+      display: flex;
+      justify-content: space-around;
+      padding: 0 250px;
+      margin-top: 50px;
+      >li{
+        width: 110px;
+        text-indent: -9999px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        >a{
+          display: block;
+          height: 110px;
+          >p{
+            width: 110px;
+            padding-top: 100px;
+            text-indent: initial;
+            color: #111;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 1.48;
+            text-align: center;
+          }
+        }
+      }
+      .convenient_function__payment_img{
+  background-image: url(./../images/payment_img_1.svg);
+      }
+      .convenient_function__charge_img{
+  background-image: url(./../images/charge_img_2.svg);
+      }
+      .convenient_function__remittance_img{
+  background-image: url(./../images/remittance_img_3.svg);
+      }
+      .convenient_function__prepaidcard_img{
+  background-image: url(./../images/prepaidcard_img_4.svg);
+      }
+      .convenient_function__line_pay_app_img{
+  background-image: url(./../images/line_pay_app_img_5.svg);
+      }
+      .convenient_function__confirm_img{
+  background-image: url(./../images/confirm_img_6.svg);
+      }
+      .convenient_function__franchisee_img{
+  background-image: url(./../images/franchisee_img_7.svg);
+      }
+      .payment-service__qr_img{
+        background-image: url(./../images/qr_img_8.svg);
+      }
+      .payment-service__line-pay_img{
+        background-image: url(./../images/qr_img_9.svg);
+      }
+      .payment-service__online-payment_img{
+        background-image: url(./../images/online-payment_img_10.svg);
+      }
+      .payment-service__star-pay_img{
+        background-image: url(./../images/qr_img_11.svg);
+      }
+    }//end of .convenient_function__ul , .payment-service__ul (공통)
+    .convenient_function__ul_2{
+      padding: initial;
+      padding: 0 380px;
+      margin-bottom: 300px;
+    }//end of .convenient_function__ul_2 아래 엘리먼트 위치를 맞추기위함
+    >.article_1{
+      color: #fff;
+      >.baner_container{
+        height: 739px;
+        background-image: url(./../images/img_line_baner.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        >h3{
+          padding-top: 150px;
+          font-weight: 700;
+          font-size: 66px;
+          line-height: 1.27;
+        }
+        >p{
+&:nth-child(2){
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.36;
+}
+>a{
+  display: block;
+  width: 100px;
+  height: 48px;
+  padding: 0 32px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 17px;
+  line-height: 48px;
+  text-align: center;
+  background-color: #57BC66;
+  border-radius: 5px;
+}
+        }
+      }//end of .baner_container
+    }//end of .article_1
+    .article_2{
+      padding: 150px 0;
+      margin: 0 auto;
+      >.article_2__container{
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        >.img_13000{
+          width: 340px;
+          height: 146px;
+          text-indent: -9999px;
+          background-image: url(./../images/img_13000.png);
+          background-repeat: no-repeat;
+        }
+        .article_2__container__text{
+          padding-left: 30px;
+          color: #111;
+          font-weight: 400;
+          font-size: 22px;
+          line-height: 1.36;
+          >p{
+            padding: 20px 0;
+          }
+
+        }// end of .article_2__container__text
+      }//end of .article_2__container
+    }//end of .article_2
+    .article_3{
+      
+      >p{
+        margin-top: 20px;
+        color: #555;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 1.48;
+      }
+      .article_3__container{
+        >ul{
+          padding: 0 250px;
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-around;
+          >li{
+            ol{
+              >li{
+                width: 120px;
+                color: #555;
+                font-weight: 400;
+                font-size: 17px;
+                line-height: 1.48;
+                text-align: center;
+
+              }
+            }
+          }//ul>li
+          >.art_3_img_h{
+            background-repeat: no-repeat;
+            background-size: 100px 100px;
+            >a{
+              display: block;
+              width: 120px;
+              height: 100px;
+              text-indent: -9999px;
+
+            }
+
+          }
+
+
+          >.art_3_img01{
+            background-image: url(./../images/img_art_3_01.svg);
+          }
+          >.art_3_img02{
+            background-image: url(./../images/img_art_3_02.svg);
+          }
+          >.art_3_img03{
+            background-image: url(./../images/img_art_3_03.svg);
+          }
+          >.art_3_img04{
+            background-image: url(./../images/img_art_3_04.svg);
+          }
+
+        }//end of ul
+      }//end of .article_3__container
+    }//end of .article_3
+    .article_4{
+      margin: 180px 0;
+      >.txt_p{
+        margin-top: 20px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: center;
+      }
+      >ul{
+        display: flex;
+        justify-content: space-around;
+        padding: 0 300px;
+        >
+        .ul__li_img01{
+          width: 190px;
+          height: 180px;
+          text-indent: -9999px;
+          background-image: url(./../images/img_art_4_01.svg);
+          background-repeat: no-repeat;
+
+        }
+        .ul__li_img02{
+          width: 190px;
+          height: 180px;
+          text-indent: -9999px;
+          background-image: url(./../images/img_art_4_02.svg);
+          background-repeat: no-repeat;
+        }
+        .ul__li_img>p{
+          margin-top: 180px;
+          color: #111;
+          font-weight: 700;
+          font-size: 17px;
+          line-height: 1.48;
+          text-align: center;
+          text-indent: initial;
+          &:nth-child(2){
+            margin-top: initial;
+            color: #555;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 1.48;
+          }
+        }
+      }//end of ul
+    }//end of article_4
+    .article_5{
+      position: absolute;
+      width: 100%;
+      // height: 100%; //임시
+      z-index: -1000;
+      >div.slides{
+        // overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 255px;
+        margin: 0 auto;
+        padding: 30px 0;
+        color: #111;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 1.22;
+        text-align: center;
+        background-color: #F5F5F5;
+        >.slides-container{
+          position: absolute;
+          left: calc(-1120px * 0);
+          top: 0;
+          width: 200%;
+          display: flex;
+          flex-flow: row nowrap;
+          >.slide_p{
+            width: calc(100% / 2);
+            margin-top: 50px;
+            // text-indent: -9999px;
+            background-position: center center;
+            background-size: cover;
+            >p>a{
+              display: block;
+              width: 124px;
+              height: 22px;
+              margin: 0 auto;
+              margin-top: 30px;
+              padding: 15px 30px;
+              color: #fff;
+              font-size: 16px;
+              background-color: #08bf5b;
+              border-radius: 5px;
+            }
+          }
+        }//end of .slides-containe
+        ul.slides-pagination{
+          display: flex;
+          >li{
+            position: absolute;
+            bottom: 5%;
+            left: 48.5%;
+            width: 8px;
+            margin-left: 5px;
+            text-indent: -9999px;
+            opacity: 100%;
+            background-color: rgba(17, 17, 17, 0.146);
+            border-radius: 100%;
+            cursor: pointer;
+            &.on>a{
+              display: block;
+              background-color: #57BC66;
+              opacity: 100%;
+            }
+            >a{
+              display: block;
+              height: 8px;
+              border-radius: 100%;
+            }
+            
+  
+            &:nth-child(2){
+              display: block;
+              left: 49.5%;
+              height: 8px;
+            }
+          }
+        }//end of ul.slides-pagination
+      }// end of div.slides
+
+    }//end of .article_5
+    .article_6{
+      width: 100%;
+      position: absolute;
+      margin: 0 auto;
+      margin-top: 700px;
+      z-index: -1000;
+     // height: 2000px;//임시
+>div.smart_pay{
+>p{
+  &:nth-child(2){
+    margin-top: 30px;
+    color: #555;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.48;
+    text-align: center;
+  }
+}
+}//end of div.smart_pay
+div.slides_payment{
+  // overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+>div.slides-container{
+  position: absolute;
+  left: calc(-1120px * 0);
+  top: 0;
+  width: 300%;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0 auto;
+  >.slide_p{
+    margin: 0 auto;
+    padding: 0 200px;
+    p{
+        &:nth-child(3){
+          padding-top: 8px;
+          color: #555;
+          font-weight: 400;
+          font-size: 22px;
+          line-height: 1.36;
+          text-align: center;
+        }
+          >span{
+            display: block;
+            color: #111;
+            font-weight: 700;
+            font-size: 22px;
+            text-align: center;
+            line-height: 1.36;
+          }
+
+    }
+    
+    .img_payment{
+      width: 900px;
+      height: 500px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      text-indent: -9999px;
+    }
+    >.img_code_payment{
+      background-image: url(./../images/img_code_payment.jpg);
+    }
+    >.img_online_payment{
+      background-image: url(./../images/img_online_payment.jpg);
+    }
+    >.img_conveyance_payment{
+      background-image: url(./../images/img_conveyance_payment.jpg);
+    }
+  }//end of .slide_p
+}//end of div.slides-container
+ul.slides-pagination{
+  display: flex;
+  >li{
+    position: absolute;
+    bottom: -600px;
+    left: 48.5%;
+    width: 8px;
+    margin-left: 5px;
+    text-indent: -9999px;
+    opacity: 100%;
+    background-color: rgba(17, 17, 17, 0.146);
+    border-radius: 100%;
+    cursor: pointer;
+    &.on>a{
+      display: block;
+      background-color: #57BC66;
+      opacity: 100%;
+    }
+    >a{
+      display: block;
+      height: 8px;
+      border-radius: 100%;
+    }
+    
+
+    &:nth-child(2){
+      display: block;
+      left: 49.5%;
+      height: 8px;
+    }
+
+    &:nth-child(3){
+      display: block;
+      left: 50.5%;
+      height: 8px;
+    }
+  }
+}//end of ul.slides-pagination
+}//end of slides_payment
+.visalinepay_container{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-top: 700px;
+  padding-bottom: 150px;
+  text-align: center;
+  >.visalinepay{
+    padding: 40px 80px;
+    color: #111;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.36;
+    >p>a{
+      display: block;
+      padding-top: 20px;
+      color: #111;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.48;
+    }
+  }
+  .visalinepay_1{
+    
+    border-right: 1px solid #ECECEC;
+  }
+
+}//end of .visalinepay_container
+.remittance_container{
+  >.txt_p{
+    margin-top: 16px;
+    color: #555;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.48;
+    text-align: center;
+  }
+  .remittance_img_box{
+    >ul{
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+      >li{  
+            width: 221px;
+            height: 146px;
+            padding: 0 15px;
+            text-indent: -9999px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            >p{
+              margin-top: 146px;
+              color: #111;
+              font-weight: 700;
+              font-size: 17px;
+              line-height: 1.48;
+              text-indent: initial;
+              text-align: center;
+            }
+      }
+      .remittance_img_1{
+        background-image: url(./../images/home-transfer01.jpg);
+      }
+      .remittance_img_2{
+        background-image: url(./../images/home-transfer02.jpg);
+      }
+      .remittance_img_3{
+        background-image: url(./../images/home-transfer03.jpg);
+      }
+      .remittance_img_4{
+        background-image: url(./../images/home-transfer04.jpg);
+      }
+    }
+  }//end of .remittance_img_box
+}//end of .remittance_container
+div.convenient_function{
+  margin-top: 300px;
+  >p{
+    margin-top: 15px;
+    color: #555;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.48;
+    text-align: center;
+  }
+
+}//end of div.convenient_function
+.free-service{
+  >.free-service__p{
+    margin-top: 15px;
+    color: #555;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.48;
+    text-align: center;
+  }
+  div.free-service__img_container{
+    width: 944px;
+    height: 463px;
+    margin: 0 auto;
+    margin-bottom: 180px;
+    >img{
+width: 100%;
+height: 100%;
+padding: 30px 0;
+    }
+  }
+}//end of .free-service
+.payment-service{
+  >.payment-service__ol{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 150px;
+    >li{
+      font-weight: 700;
+      font-size: 17px;
+      line-height:48px;
+      background-color: #08bf5b;
+      border-radius: 5px;
+      &:nth-child(1){
+        width: auto;
+        margin-right: 15px;
+      }
+      &:nth-child(2){
+        width: auto;
+      }
+      >a{
+        display: block;
+        height: 48px;
+        padding: 0 32px;
+        color: #fff;
+
+      }
+    }
+  }
+}//end of .payment-service
+.safety-service{
+  >p{
+&:nth-child(3){
+  margin-bottom: 20px;
+  color: #949494;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.58;
+  text-align: center;
+}// h5도 자식 취급하니 &:nth-child(3)번째되겠다.
+  }
+  .safety-service__p{
+    margin: 15px 0;
+    color: #555;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.48;
+    text-align: center;
+  }
+  .safety-service__img_container{
+    width: 380px;
+    height: 380px;
+    margin: 0 auto;
+    margin-bottom: 150px;
+    >img{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}//end of .safety-service
+    }//end of .article_6
+  }//end of section
+  footer{
+    margin-top: 5800px;//포지션 중첩때문에 마진을 이렇게 줬다 해결방안 모색중...
+    padding: 80px 40px 56px;
+    background-color: #262424; //작업종료후 주석풀어주기
+    >div.footer-inner{
+      display: flex;
+      width: 100%;
+      padding: 0 40px;
+      .footer-inner__container_1{
+        width: 300px;
+        // border: 1px solid red;//임시
+      >.footer-inner__ul{
+        width: 230px;
+        margin-left: 20px;
+
+        >li{
+          margin-bottom: 8px;
+          border: 1px solid #363636;
+          border-radius: 5px;
+          &:nth-child(3){
+            background-color: #555555;
+          }
+          &:nth-child(4){
+            background-color: #555555;
+          }
+
+
+
+
+          >a{
+            display: block;
+            color: #949494;
+            height: 100%;
+            padding: 10px 30px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+
+          }
+        }
+      }//end of .footer-inner__ul
+      >address{
+        color: #555;
+        margin-top: 200px;
+        font-weight: 700;
+        font-size: 12px;
+        font-style: italic;
+        line-height: 1.58;
+      }
+      }//end of .footer-inner__container_1
+      .footer-inner__container_2{
+        width: 480px;
+        // border: 1px solid #000;//임시
+        
+        >p{
+          padding: 0 10px;
+          display: inline-block;
+          position: relative;
+        &::after{
+          content: '';
+          display: inline-block;
+          position: absolute;
+          top: 6px;
+          width: 1px;
+          // zoom: 1.16;//짝대기가 살짝아래로가는 효과와 길어지는 효과 발동
+          height: 9px;
+          margin: 0 10px;
+          background: #949494;
+        }
+        >a{
+          color:#949494 ;
+
+        }
+        }
+        p.mb_20{
+          margin-bottom: 20px;
+        }
+      }//end of  .footer-inner__container_2
+      .footer-inner__container_3{
+        margin-left: 50px;
+        >ul.footer-inner__container_3__lang{
+          width: 220px;
+          padding: 10px 10px 10px 15px;
+          border: 1px solid #555555;
+          border-radius: 5px;
+          &::before{
+            display: block;
+            float: right;
+            height: 17px;
+            width: 17px;
+            margin-top: 5px;
+            background: url(./../images/ico-arrdown-black.svg) no-repeat 0 0;
+            background-size: 17px 17px;
+            content: '';
+          }
+          >li{
+            font-size: 17px;
+            line-height: 25px;
+            &:nth-child(1){
+              >a{
+                display: block;
+                color:#949494 ;
+              }
+            }
+            &:nth-child(2),&:nth-child(3),&:nth-child(4){
+              display: none;
+              >a{
+                color:#3A4A55 ;
+              }
+            }
+          }
+        }// end of ul.footer-inner__container_3__lang
+      }//end of .footer-inner__container_3
+    }//end of div.footer-inner
+
+  }// end of footer
+}//end of #wrap
