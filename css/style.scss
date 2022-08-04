@@ -47,6 +47,7 @@ body{overflow-x:hidden;
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: space-between;
+
       >h1{
         color: #000;
       }
@@ -56,8 +57,8 @@ body{overflow-x:hidden;
         // width: calc(30.3333% - 20px); 
         >li{
           @media #{$mobile}{
-            width: 120px;
-          }
+            width: 100px;
+          }//end of (mobile)
           padding: 0 10px;
           &.mnu_on>a{
             color: rgb(35, 210, 35);
@@ -66,16 +67,19 @@ body{overflow-x:hidden;
             color: #1e1e1e;
             font-weight: 700;
             font-size: 16px;
+            @media #{$mobile}{
+              font-size: 14px;
+            }//end of (mobile)
           }
         }
-      }//mnu end
+      }//end of ul.mnu 
       >ul.lang{
         padding: 0 50px;
         line-height: initial;
         @media #{$mobile}{
           display: none;
         }
-        // border: 1px solid pink;//임시
+      
         >li.lang__on{
           position: relative;
           color: #1e1e1e;
@@ -161,8 +165,9 @@ body{overflow-x:hidden;
           transform: translate(-50% , -50%);
           color: #fff;
           @media #{$mobile}{
-            top: 30%;
-          }//end of mobile
+            left:50%;
+            top: 18%;
+          }//end of (mobile)
           >p{
             &:nth-child(1){
               font-weight: 800;
@@ -191,7 +196,7 @@ body{overflow-x:hidden;
                 font-size: 10px;
                 text-indent: 8px;
               }
-            }//end of mobile
+            }//end of (mobile)
           }
           ul.download{
             padding: 50px 50px;
@@ -206,13 +211,13 @@ body{overflow-x:hidden;
             }
             @media #{$mobile}{
               display: none;
-            }//end of mobile
-          }//.ul.download end
+            }//end of (mobile)
+          }//end of ul.download 
           ol{
             display: flex;
             @media #{$mobile}{
               display: none;
-            }//end of mobile
+            }//end of (mobile)
             >li{
               margin-left: 3px;
               width: 40px;
@@ -310,9 +315,11 @@ body{overflow-x:hidden;
           }//end of .mouse
       }//.slides_screen end
     }//slide end
-  }//article_1 end
+  }//end of article_1 
   .article_2{
     height: 100%;
+    padding: 0 20px;
+    padding-bottom: 200px;
     >h3{
       padding: 30px 0 15px 0;
       color: #1e1e1e;
@@ -338,9 +345,11 @@ body{overflow-x:hidden;
       padding: 50px 120px 100px 170px;
       @media #{$mobile}{
         padding: initial;
+        margin-bottom: 100px;
       }
       
       >.article2__flexcontainer__box_1{
+
       >.frame_1{
         margin-bottom: 30px;
         width: 80px;
@@ -373,14 +382,17 @@ body{overflow-x:hidden;
         font-size: 18px;
         line-height: 1.7;
         @media #{$mobile}{
-          font-size: 11px;
+          font-size: 8px;
+          br{
+            display: none;
+          }
         }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
         line-height: 1.56;
-      }
-    }
+        }
+    }//end of p(LINE NEWS 문장)
         >a{
           display: block;
           margin-top: 60px;
@@ -401,8 +413,8 @@ body{overflow-x:hidden;
           @media #{$mobile}{
             display: block;
             position: absolute;
-            left: 130px;
-            margin-top: 30px;
+            left: 110px;
+            margin-top: 70px;
             width: 200px;
             font-size: 15px;
             color: #fff;
@@ -411,8 +423,9 @@ body{overflow-x:hidden;
           }
       
     }//end of LINE NEWS 자세히보기
-    }//article2__flexcontainer__box_1 end
+    }//end of article2__flexcontainer__box_1 
     >.article2__flexcontainer__box_2{
+
       >p{
         width: 750px;
         height: 500px;
@@ -421,13 +434,13 @@ body{overflow-x:hidden;
         background-repeat: no-repeat;
         background-size: 750px 500px;
         @media #{$mobile}{
-          width: 300px;
-          height: 500px;
-          margin-top: 70px;
-          background-size: 300px 300px;
-        }
-      }
-    }
+          width: 200px;
+          height: 200px;
+          margin-top: 150px;
+          background-size: 200px 200px;
+        }// end of (mobile)
+      }//end of (LINE NEWS img)
+    }//end of .article2__flexcontainer__box_2
     
     }//.article2__flexcontainer  end
     >.article2__flexcontainer_2{
@@ -437,6 +450,7 @@ body{overflow-x:hidden;
       padding: 50px 270px 100px 10px;
       @media #{$mobile}{
       padding: initial;
+      margin-bottom: 100px;
       }//end of .article2__flexcontainer_2(mobile)
       >.article2__flexcontainer__box_1{
       >.frame_1{
@@ -470,8 +484,8 @@ body{overflow-x:hidden;
         font-size: 18px;
         line-height: 1.7;
         @media #{$mobile}{
-          font-size: 11px;
-        }
+          font-size: 10px;
+        }//end of (mobile)
       >span{
         margin-bottom: 12px;
         color: #07b53b;
@@ -498,14 +512,14 @@ body{overflow-x:hidden;
       @media #{$mobile}{
         display: block;
         position: absolute;
-        left: 130px;
-        margin-top: 30px;
+        left: 110px;
+        margin-top: 50px;
         width: 200px;
         font-size: 15px;
         color: #fff;
         background-color: #52B24D;
         border: 1px solid transparent;
-      }
+      }//end of (mobile)
     }//end of LINE Healthcare 자세히보기
     }//article2__flexcontainer__box_1 end
     >.article2__flexcontainer__box_2{
@@ -517,12 +531,12 @@ body{overflow-x:hidden;
         background-repeat: no-repeat;
         background-size: 750px 500px;
         @media #{$mobile}{
-          width: 300px;
-          height: 500px;
-          margin-top: 70px;
-          background-size: 300px 300px;
+          width: 200px;
+          height: 200px;
+          margin-top: 120px;
+          background-size: 200px 200px;
         }
-      }
+      }//end of p (LINE Healthcare이미지)
     }
     }//.article2__flexcontainer_2  end
     >.article2__flexcontainer_3{
@@ -530,6 +544,7 @@ body{overflow-x:hidden;
       padding: 50px 120px 100px 170px;
       @media #{$mobile}{
         padding: initial;
+        margin-bottom: 100px;
       }//end of .article2__flexcontainer_3(mobile)
       >.article2__flexcontainer__box_1{
       >.frame_1{
@@ -563,14 +578,17 @@ body{overflow-x:hidden;
         font-size: 18px;
         line-height: 1.7;
         @media #{$mobile}{
-          font-size: 11px;
+          font-size: 10px;
+          br{
+            display: none;
+          }
         }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
         line-height: 1.56;
       }
-    }
+    }//end of p(LINE Pay 문장)
     >ul{
       display: flex;
       margin-top: 60px;
@@ -622,31 +640,30 @@ body{overflow-x:hidden;
           @media #{$mobile}{
             display: block;
             position: absolute;
-            left: 130px;
+            left: 110px;
             width: 200px;
-            margin-top: 30px;
+            margin-top: -10px;
             font-size: 15px;
             color: #fff;
             background-color: #52B24D;
             border: 1px solid transparent;
-          }
-                  >a{
+          }//end of (mobile)
+            >a{
           display: block;
           height: 60px;
           @media #{$mobile}{
             color: #fff;
-          }
-
-        }
-          >a:hover{
+          }//end of (mobile)
+          &:hover{
             color: #fff;
             background-color: #52B24D;
             border-radius: 8px;
             box-sizing: border-box;
           }
+        }
         }//end of LINE Pay 자세히보기 버튼
       }
-    } //ul end
+    } // end of ul
     }//article2__flexcontainer__box_1 end
     >.article2__flexcontainer__box_2{
       >p{
@@ -657,12 +674,12 @@ body{overflow-x:hidden;
         background-repeat: no-repeat;
         background-size: 750px 500px;
         @media #{$mobile}{
-          width: 300px;
-          height: 500px;
-          margin-top: 70px;
-          background-size: 300px 300px;
-        }
-      }
+          width: 200px;
+          height: 200px;
+          margin-top: 115px;
+          background-size: 200px 200px;
+        }//end of (mobile)
+      }//end of p(LINE Pay 이미지)
     }
     }//.article2__flexcontainer_3  end
     >.article2__flexcontainer_4{
@@ -671,6 +688,7 @@ body{overflow-x:hidden;
       padding: 80px 310px 100px 40px;
       @media #{$mobile}{
         padding: initial;
+        margin-bottom: 100px;
       }
       >.article2__flexcontainer__box_1{
       >.frame_1{
@@ -705,14 +723,17 @@ body{overflow-x:hidden;
         font-size: 18px;
         line-height: 1.7;
         @media #{$mobile}{
-          font-size: 11px;
+          font-size: 10px;
+          br{
+            display: none;
+          }
         }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
         line-height: 1.56;
       }
-    }
+    }//end of p(LINE MUSIC 문장)
     >ul{
       display: flex;
       margin-top: 60px;
@@ -764,9 +785,9 @@ body{overflow-x:hidden;
           @media #{$mobile}{
             display: block;
             position: absolute;
-            left: 130px;
+            left: 110px;
             width: 200px;
-            margin-top: 30px;
+            margin-top: -10px;
             font-size: 15px;
             color: #fff;
             background-color: #52B24D;
@@ -798,19 +819,20 @@ body{overflow-x:hidden;
         background-repeat: no-repeat;
         background-size: 750px 500px;
         @media #{$mobile}{
-          width: 300px;
-          height: 500px;
-          margin-top: 70px;
-          background-size: 300px 300px;
+          width: 200px;
+          height: 200px;
+          margin-top: 110px;
+          background-size: 200px 200px;
         }
-      }
+      }//end of p(LINE MUSIC 이미지)
     }
-    }//.article2__flexcontainer_4  end
+    }//end of .article2__flexcontainer_4 
     >.article2__flexcontainer_5{
       display: flex;
       padding: 50px 120px 100px 170px;
       @media #{$mobile}{
         padding: initial;
+        margin-bottom: 100px;
       }
       >.article2__flexcontainer__box_1{
       >.frame_1{
@@ -845,14 +867,14 @@ body{overflow-x:hidden;
         font-size: 18px;
         line-height: 1.7;
         @media #{$mobile}{
-          font-size: 11px;
+          font-size: 10px;
         }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
         line-height: 1.56;
       }
-    }
+    }//end of p (LINE CLOVA 문장)
         >a{
           display: block;
           margin-top: 60px;
@@ -873,9 +895,9 @@ body{overflow-x:hidden;
           @media #{$mobile}{
             display: block;
             position: absolute;
-            left: 130px;
+            left: 110px;
             width: 200px;
-            margin-top: 30px;
+            margin-top: 80px;
             font-size: 15px;
             color: #fff;
             background-color: #52B24D;
@@ -883,7 +905,7 @@ body{overflow-x:hidden;
           }
         
       
-    }
+    }//end of a (LINE CLAOVA 자세히보기 버튼)
     }//article2__flexcontainer__box_1 end
     >.article2__flexcontainer__box_2{
       >p{
@@ -894,14 +916,14 @@ body{overflow-x:hidden;
         background-repeat: no-repeat;
         background-size: 750px 500px;
         @media #{$mobile}{
-          width: 300px;
-          height: 500px;
-          margin-top: 70px;
-          background-size: 300px 300px;
+          width: 200px;
+          height: 200px;
+          margin-top: 160px;
+          background-size: 200px 200px;
         }
-      }
+      }//end of p(LINE CLOVA 이미지)
     }
-    }//.article2__flexcontainer_5  end
+    }//end of .article2__flexcontainer_5 
   }//article_2 end
   .article_3{
     padding: 200px 0;
@@ -1083,6 +1105,9 @@ margin-top: 100px;
     border-bottom: 1px solid #d9d9d9;
     .fot_gnb{
       display: flex;
+      @media #{$mobile}{
+        justify-content: center;
+          }//end of mobile
       >li{
         position: relative;
         width: 130px;
@@ -1090,9 +1115,11 @@ margin-top: 100px;
         padding: 0 10px;
         font-weight: 500;
         background-repeat: no-repeat;
+        
         @media #{$mobile}{
+          width: 30px;
           font-size: 8px;
-            }
+            }//end of mobile
 
         &.footer_logo{
           width: 40px;
@@ -1166,12 +1193,13 @@ margin-top: 100px;
     margin-top: 50px;
 >ul.fot_lnb{
   display: flex;
+  justify-content: center;
   >li{
     height: 50px;
     margin-left: 50px;
     font-weight: 400;
     @media #{$mobile}{
-      width: 100px;
+      width: 50px;
       margin-left: 10px;
       font-size: 5px;
     }
