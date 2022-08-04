@@ -19,12 +19,17 @@
     transform: translatey(-20px);
   }
 }
+//문자열변수
+$mobile : "screen and (max-width:650px)";
 
 body{overflow-x:hidden; 
   overflow-y:auto;}
 #wrap{
   width: 100%;
   margin: 0 auto;
+  @media #{$mobile}{
+    min-width: 100%;
+  }
   >header{
     // display: none; //임시
     position: fixed;
@@ -36,6 +41,7 @@ body{overflow-x:hidden;
     background-color: #fff;
     opacity: 90%;
     z-index: 1000;//맨 앞에 있어야함
+
     >.fix_bar{
       display: flex;
       flex-direction: row;
@@ -49,6 +55,9 @@ body{overflow-x:hidden;
         justify-content: center;
         // width: calc(30.3333% - 20px); 
         >li{
+          @media #{$mobile}{
+            width: 120px;
+          }
           padding: 0 10px;
           &.mnu_on>a{
             color: rgb(35, 210, 35);
@@ -63,6 +72,9 @@ body{overflow-x:hidden;
       >ul.lang{
         padding: 0 50px;
         line-height: initial;
+        @media #{$mobile}{
+          display: none;
+        }
         // border: 1px solid pink;//임시
         >li.lang__on{
           position: relative;
@@ -134,16 +146,23 @@ body{overflow-x:hidden;
     >
   .article_1{
     height: 700px;
+    @media #{$mobile}{
+      height: 250px;
+    }
+    
     >.slide{
       >.slides_screen{
         width: 100%;
         >.visual_txt{
           position: absolute;
-          /* 그림자위치 중앙으로 잡기 */
+          /* 위치 중앙으로 잡기 */
           top: 50%;
           left: 40%;
           transform: translate(-50% , -50%);
           color: #fff;
+          @media #{$mobile}{
+            top: 30%;
+          }//end of mobile
           >p{
             &:nth-child(1){
               font-weight: 800;
@@ -158,6 +177,21 @@ body{overflow-x:hidden;
               font-size: 40px;
               text-indent: 8px;
             }
+            @media #{$mobile}{
+              &:nth-child(1){
+                font-weight: 800;
+                font-size: 30px;
+                &::after{
+                  display: inline-block;
+                  content: " on LINE";
+                }
+              }
+              &:nth-child(2){
+                font-weight: 400;
+                font-size: 10px;
+                text-indent: 8px;
+              }
+            }//end of mobile
           }
           ul.download{
             padding: 50px 50px;
@@ -170,9 +204,15 @@ body{overflow-x:hidden;
               background-repeat: no-repeat;
               background-size: contain
             }
+            @media #{$mobile}{
+              display: none;
+            }//end of mobile
           }//.ul.download end
           ol{
             display: flex;
+            @media #{$mobile}{
+              display: none;
+            }//end of mobile
             >li{
               margin-left: 3px;
               width: 40px;
@@ -204,7 +244,6 @@ body{overflow-x:hidden;
               >a{
               display: block;
               height: 40px;
-
               }
             }
           }//ol end
@@ -238,6 +277,9 @@ body{overflow-x:hidden;
             color: #fff;
             font-weight: 400;
             animation: up-down 1.4s infinite ease-in-out alternate;
+            @media #{$mobile}{
+              display: none;
+            }
           }
           >.mouse{
             position: absolute;
@@ -262,7 +304,10 @@ body{overflow-x:hidden;
         
               animation: mousewheel 1s linear infinite;
             }
-          }
+            @media #{$mobile}{
+              display: none;
+            }
+          }//end of .mouse
       }//.slides_screen end
     }//slide end
   }//article_1 end
@@ -273,16 +318,28 @@ body{overflow-x:hidden;
       color: #1e1e1e;
       font-size: 70px;
       text-align: center;
+      @media #{$mobile}{
+        margin-top: 10px;
+        font-size: 30px;
+      }
     }
     >p{
       padding-bottom: 230px;
       color: #616161;
       font-size: 20px;
       text-align: center;
+      @media #{$mobile}{
+        font-size: 13px;
+        padding-bottom: initial;
+      }
     }
     >.article2__flexcontainer{
       display: flex;
       padding: 50px 120px 100px 170px;
+      @media #{$mobile}{
+        padding: initial;
+      }
+      
       >.article2__flexcontainer__box_1{
       >.frame_1{
         margin-bottom: 30px;
@@ -296,17 +353,28 @@ body{overflow-x:hidden;
           width: 100%;
           height:100%;
         }
+        @media #{$mobile}{
+        margin-top: 100px;
+        width: 40px;
+        height: 40px;
+        }//end of .frame_1 (mobile)
         }//.frame_1 end
       h4{
         font-size: 40px;
         margin-bottom: 20px;
         line-height: 1.2;
+        @media #{$mobile}{
+          font-size: 15px;
+        }
       }
       p{
         color: #777;
         font-weight: 400;
         font-size: 18px;
         line-height: 1.7;
+        @media #{$mobile}{
+          font-size: 11px;
+        }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
@@ -330,9 +398,19 @@ body{overflow-x:hidden;
             background-color: #52B24D;
             border: 1px solid transparent;
           }
-        
+          @media #{$mobile}{
+            display: block;
+            position: absolute;
+            left: 130px;
+            margin-top: 30px;
+            width: 200px;
+            font-size: 15px;
+            color: #fff;
+            background-color: #52B24D;
+            border: 1px solid transparent;
+          }
       
-    }
+    }//end of LINE NEWS 자세히보기
     }//article2__flexcontainer__box_1 end
     >.article2__flexcontainer__box_2{
       >p{
@@ -342,14 +420,24 @@ body{overflow-x:hidden;
         background-image: url(./../images/lineA_2-1.png);
         background-repeat: no-repeat;
         background-size: 750px 500px;
+        @media #{$mobile}{
+          width: 300px;
+          height: 500px;
+          margin-top: 70px;
+          background-size: 300px 300px;
+        }
       }
     }
+    
     }//.article2__flexcontainer  end
     >.article2__flexcontainer_2{
       display: flex;
       flex-wrap: nowrap;
       flex-direction: row-reverse;
       padding: 50px 270px 100px 10px;
+      @media #{$mobile}{
+      padding: initial;
+      }//end of .article2__flexcontainer_2(mobile)
       >.article2__flexcontainer__box_1{
       >.frame_1{
         margin-bottom: 30px;
@@ -357,22 +445,33 @@ body{overflow-x:hidden;
         height: 80px;
         border: 1px solid #EFEFEF;
         border-radius: 5px;
+        @media #{$mobile}{
+          margin-top: 100px;
+          width: 40px;
+          height: 40px;
+          }//end of .frame_1 (mobile)
         >img{
           display: block;
           width: 100%;
           height:100%;
         }
-        }//.frame_1 end
+        }//end of.frame_1
       h4{
         font-size: 40px;
         margin-bottom: 20px;
         line-height: 1.2;
+        @media #{$mobile}{
+          font-size: 15px;
+        }
       }
       p{
         color: #777;
         font-weight: 400;
         font-size: 18px;
         line-height: 1.7;
+        @media #{$mobile}{
+          font-size: 11px;
+        }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
@@ -396,7 +495,18 @@ body{overflow-x:hidden;
         background-color: #52B24D;
         border: 1px solid transparent;
       }
-    }
+      @media #{$mobile}{
+        display: block;
+        position: absolute;
+        left: 130px;
+        margin-top: 30px;
+        width: 200px;
+        font-size: 15px;
+        color: #fff;
+        background-color: #52B24D;
+        border: 1px solid transparent;
+      }
+    }//end of LINE Healthcare 자세히보기
     }//article2__flexcontainer__box_1 end
     >.article2__flexcontainer__box_2{
       >p{
@@ -406,20 +516,33 @@ body{overflow-x:hidden;
         background-image: url(./../images/lineA_2-2.png);
         background-repeat: no-repeat;
         background-size: 750px 500px;
+        @media #{$mobile}{
+          width: 300px;
+          height: 500px;
+          margin-top: 70px;
+          background-size: 300px 300px;
+        }
       }
     }
     }//.article2__flexcontainer_2  end
     >.article2__flexcontainer_3{
       display: flex;
       padding: 50px 120px 100px 170px;
+      @media #{$mobile}{
+        padding: initial;
+      }//end of .article2__flexcontainer_3(mobile)
       >.article2__flexcontainer__box_1{
       >.frame_1{
         margin-bottom: 30px;
         width: 80px;
         height: 80px;
-        border: 1px solid #EFEFEF;
         border-radius: 5px;
         box-sizing: border-box;
+        @media #{$mobile}{
+          margin-top: 100px;
+          width: 40px;
+          height: 40px;
+          }//end of .frame_1 (mobile)
         >img{
           display: block;
           width: 100%;
@@ -430,12 +553,18 @@ body{overflow-x:hidden;
         font-size: 40px;
         margin-bottom: 20px;
         line-height: 1.2;
+        @media #{$mobile}{
+          font-size: 15px;
+        }
       }
       p{
         color: #777;
         font-weight: 400;
         font-size: 18px;
         line-height: 1.7;
+        @media #{$mobile}{
+          font-size: 11px;
+        }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
@@ -458,6 +587,11 @@ body{overflow-x:hidden;
           background-position: 10px -40px ;
           &:hover{
             background-position-y: -89px;
+            cursor: pointer;
+
+          }
+          @media #{$mobile}{
+            display: none;
           }
         }
         &:nth-child(2){
@@ -465,6 +599,11 @@ body{overflow-x:hidden;
           background-position: -30px -40px ;
           &:hover{
             background-position-y: -89px;
+            cursor: pointer;
+
+          }
+          @media #{$mobile}{
+            display: none;
           }
         }
         &:nth-child(3){
@@ -478,20 +617,34 @@ body{overflow-x:hidden;
           text-align: center;
           border: 1px solid #D9D9D9;
           border-radius: 8px;
-          &:hover{
+          &:hover{border: 1px solid transparent;}
+    
+          @media #{$mobile}{
+            display: block;
+            position: absolute;
+            left: 130px;
+            width: 200px;
+            margin-top: 30px;
+            font-size: 15px;
+            color: #fff;
+            background-color: #52B24D;
             border: 1px solid transparent;
           }
+                  >a{
+          display: block;
+          height: 60px;
+          @media #{$mobile}{
+            color: #fff;
+          }
+
+        }
           >a:hover{
             color: #fff;
             background-color: #52B24D;
             border-radius: 8px;
             box-sizing: border-box;
           }
-        }
-        >a{
-          display: block;
-          height: 60px;
-        }
+        }//end of LINE Pay 자세히보기 버튼
       }
     } //ul end
     }//article2__flexcontainer__box_1 end
@@ -503,6 +656,12 @@ body{overflow-x:hidden;
         background-image: url(./../images/lineA_2-3.png);
         background-repeat: no-repeat;
         background-size: 750px 500px;
+        @media #{$mobile}{
+          width: 300px;
+          height: 500px;
+          margin-top: 70px;
+          background-size: 300px 300px;
+        }
       }
     }
     }//.article2__flexcontainer_3  end
@@ -510,6 +669,9 @@ body{overflow-x:hidden;
       display: flex;
       flex-direction: row-reverse;
       padding: 80px 310px 100px 40px;
+      @media #{$mobile}{
+        padding: initial;
+      }
       >.article2__flexcontainer__box_1{
       >.frame_1{
         margin-bottom: 30px;
@@ -518,6 +680,11 @@ body{overflow-x:hidden;
         border: 1px solid #EFEFEF;
         border-radius: 5px;
         box-sizing: border-box;
+        @media #{$mobile}{
+          margin-top: 100px;
+          width: 40px;
+          height: 40px;
+          }//end of .frame_1 (mobile)
         >img{
           display: block;
           width: 100%;
@@ -528,12 +695,18 @@ body{overflow-x:hidden;
         font-size: 40px;
         margin-bottom: 20px;
         line-height: 1.2;
+        @media #{$mobile}{
+          font-size: 15px;
+        }
       }
       p{
         color: #777;
         font-weight: 400;
         font-size: 18px;
         line-height: 1.7;
+        @media #{$mobile}{
+          font-size: 11px;
+        }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
@@ -550,12 +723,18 @@ body{overflow-x:hidden;
               background-repeat: no-repeat;
               border: 1px solid #D9D9D9;
               border-radius: 8px;
+
         &:nth-child(1){
           margin-left: 0px;
           background-image: url(./../images/sprite-download-list.png);
           background-position: 10px -40px ;
           &:hover{
             background-position-y: -89px;
+            cursor: pointer;
+
+          }
+          @media #{$mobile}{
+            display: none;
           }
         }
         &:nth-child(2){
@@ -563,6 +742,11 @@ body{overflow-x:hidden;
           background-position: -30px -40px ;
           &:hover{
             background-position-y: -89px;
+            cursor: pointer;
+
+          }
+          @media #{$mobile}{
+            display: none;
           }
         }
         &:nth-child(3){
@@ -576,22 +760,34 @@ body{overflow-x:hidden;
           text-align: center;
           border: 1px solid #D9D9D9;
           border-radius: 8px;
-          &:hover{
-            border: 1px solid transparent;
-          }
-          >a:hover{
+          &:hover{border: 1px solid transparent;}
+          @media #{$mobile}{
+            display: block;
+            position: absolute;
+            left: 130px;
+            width: 200px;
+            margin-top: 30px;
+            font-size: 15px;
             color: #fff;
             background-color: #52B24D;
-            border-radius: 8px;
-            box-sizing: border-box;
+            border: 1px solid transparent;
           }
-        }
-        >a{
-          display: block;
-          height: 60px;
-        }
+          >a{
+            display: block;
+            height: 60px;
+            @media #{$mobile}{
+              color: #fff;
+            }
+            &:hover{
+              color: #fff;
+              background-color: #52B24D;
+              border-radius: 8px;
+              box-sizing: border-box;
+            }
+          }
+        }//end of LINE MUSIC 자세히보기 버튼
       }
-    } //ul end
+    } //end of ul
     }//article2__flexcontainer__box_1 end
     >.article2__flexcontainer__box_2{
       >p{
@@ -601,12 +797,21 @@ body{overflow-x:hidden;
         background-image: url(./../images/lineA_2-4.png);
         background-repeat: no-repeat;
         background-size: 750px 500px;
+        @media #{$mobile}{
+          width: 300px;
+          height: 500px;
+          margin-top: 70px;
+          background-size: 300px 300px;
+        }
       }
     }
     }//.article2__flexcontainer_4  end
     >.article2__flexcontainer_5{
       display: flex;
       padding: 50px 120px 100px 170px;
+      @media #{$mobile}{
+        padding: initial;
+      }
       >.article2__flexcontainer__box_1{
       >.frame_1{
         margin-bottom: 30px;
@@ -615,6 +820,11 @@ body{overflow-x:hidden;
         border: 1px solid #EFEFEF;
         border-radius: 5px;
         box-sizing: border-box;
+        @media #{$mobile}{
+          margin-top: 100px;
+          width: 40px;
+          height: 40px;
+          }//end of .frame_1 (mobile)
         >img{
           display: block;
           width: 100%;
@@ -625,12 +835,18 @@ body{overflow-x:hidden;
         font-size: 40px;
         margin-bottom: 20px;
         line-height: 1.2;
+        @media #{$mobile}{
+          font-size: 15px;
+        }
       }
       p{
         color: #777;
         font-weight: 400;
         font-size: 18px;
         line-height: 1.7;
+        @media #{$mobile}{
+          font-size: 11px;
+        }
       >span{
         margin-bottom: 12px;
         color: #07b53b;
@@ -654,6 +870,17 @@ body{overflow-x:hidden;
             background-color: #52B24D;
             border: 1px solid transparent;
           }
+          @media #{$mobile}{
+            display: block;
+            position: absolute;
+            left: 130px;
+            width: 200px;
+            margin-top: 30px;
+            font-size: 15px;
+            color: #fff;
+            background-color: #52B24D;
+            border: 1px solid transparent;
+          }
         
       
     }
@@ -666,6 +893,12 @@ body{overflow-x:hidden;
         background-image: url(./../images/lineA_2-5.png);
         background-repeat: no-repeat;
         background-size: 750px 500px;
+        @media #{$mobile}{
+          width: 300px;
+          height: 500px;
+          margin-top: 70px;
+          background-size: 300px 300px;
+        }
       }
     }
     }//.article2__flexcontainer_5  end
@@ -679,12 +912,20 @@ body{overflow-x:hidden;
       font-size: 60px;
       line-height: 1.334;
       text-align: center;
+      @media #{$mobile}{
+        font-size: 20px;
+      }
+
     }
     >p{
       color: #616161;
       font-size: 20px;
       line-height: 1.334;
       text-align: center;
+      @media #{$mobile}{
+        font-size: 15px;
+        br{display:none}
+      }
     }
     .communication_container{
       display: flex;
@@ -726,6 +967,9 @@ body{overflow-x:hidden;
   background-image: url(./../images/support.png);
   background-size: 100% 320px;
   background-repeat: no-repeat;
+  @media #{$mobile}{
+    font-size: 20px;
+  }
   >a{
     color: #fff;
     display: block;
@@ -734,7 +978,8 @@ body{overflow-x:hidden;
 }//p.support end
   }//.article_3 end
   .article_4{
-    height: 900px;
+    height: 100%;
+    padding-bottom: 100px;
     background-color: #F7F8F9;
     z-index: -1000;
     >h3{
@@ -742,6 +987,10 @@ body{overflow-x:hidden;
       color: #1e1e1e;
       font-size: 70px;
       text-align: center;
+      @media #{$mobile}{
+        font-size: 20px;
+      }
+      
     }
     >p{
       padding-bottom: 130px;
@@ -749,6 +998,9 @@ body{overflow-x:hidden;
       font-weight: 500;
       font-size: 20px;
       text-align: center;
+      @media #{$mobile}{
+        font-size: 15px;
+      }
     }
     .service_continer{
       display: flex;
@@ -756,6 +1008,10 @@ body{overflow-x:hidden;
       flex-direction: row;
       justify-content: space-between;
       justify-items: center;
+      @media #{$mobile}{
+        flex-direction: column;
+        justify-content: center
+      }
       >
       ul{
         position: relative;
@@ -763,6 +1019,13 @@ body{overflow-x:hidden;
       width: 323px;
       height: 428px;
       background-repeat: no-repeat;
+      @media #{$mobile}{
+        width: 200px;
+        height:250px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        background-size: contain;
+      }
 
       &:nth-child(1){
         background-image: url(./../images/service-1.png);
@@ -788,6 +1051,9 @@ body{overflow-x:hidden;
         width: 150px;
         font-weight: 700;
         text-align: center;
+        @media #{$mobile}{
+            display: none;
+        }
         >a{
           display: none;
           height: 50px;
@@ -809,6 +1075,10 @@ body{overflow-x:hidden;
 >footer{
   padding: 30px 220px;
   height: 100%;
+  @media #{$mobile}{
+padding: initial;
+margin-top: 100px;
+  }
   >.footer_box{
     border-bottom: 1px solid #d9d9d9;
     .fot_gnb{
@@ -820,13 +1090,23 @@ body{overflow-x:hidden;
         padding: 0 10px;
         font-weight: 500;
         background-repeat: no-repeat;
+        @media #{$mobile}{
+          font-size: 8px;
+            }
+
         &.footer_logo{
           width: 40px;
           height: 40px;
           background-image: url(./../images/footer_logo.png);
           background-size: contain;
           text-indent: -9999px;
-          }
+          @media #{$mobile}{
+            display: none;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+              }//end of .footer_logo(mobile)
+          }//end of .footer_logo
           &:nth-child(2){
             background-position: -3px 0;
             &::before{
@@ -884,14 +1164,25 @@ body{overflow-x:hidden;
   }//.footer_box end
   >address{
     margin-top: 50px;
->.fot_lnb{
+>ul.fot_lnb{
   display: flex;
   >li{
-    margin-left: 50px;
     height: 50px;
+    margin-left: 50px;
     font-weight: 400;
+    @media #{$mobile}{
+      width: 100px;
+      margin-left: 10px;
+      font-size: 5px;
+    }
+
+    
     &:nth-child(5){
       padding-right: 150px;
+      @media #{$mobile}{
+        padding-right: initial;
+      }
+      
     }
     &:nth-child(6){
       width: 40px;
@@ -902,7 +1193,11 @@ body{overflow-x:hidden;
       >a{
         display: block;
         height: 30px;
+        
       }
+      @media #{$mobile}{
+        display: none;
+      }//end of fot-youtube-logo
     }
     &:nth-child(7){
       width: 40px;
@@ -915,9 +1210,12 @@ body{overflow-x:hidden;
         display: block;
         height: 30px;
       }
+      @media #{$mobile}{
+        display: none;
+      }//end of fot-facebook-logo
     }
-  }
-}//fot_lnb end
+  }//end of li
+}//ul.fot_lnb end
   }//address end
 }//footer end
 }//#wrap end

@@ -1,19 +1,42 @@
 @charset "UTF-8";
 
+//모바일 문자열변수
+$mobile : "screen and (max-width:650px)";
+
+body{overflow-x:hidden; 
+  overflow-y:auto;}
 #wrap{
   margin: 0 auto;
-
+  @media #{$mobile}{
+    min-width: 100%;
+  }
   >header{
     >h1{
       height: 400px;
       text-indent: -9999px;
       background-image: url(./../images/img_01.png);
       background-repeat: no-repeat;
-    }
+      @media #{$mobile}{
+        width: 650px;
+        height: 173px;
+        background-position-x: -100px;
+        background-size: contain;
+      }
+    }//end of h1(LINE NEWS)
     >p{
       height: 500px;
-    }
-  }//header end
+      @media #{$mobile}{
+      position: relative;
+        width: 650px;
+        height: 200px;
+        >img{
+          position: absolute;
+          right: 100px;
+          width: 100%;
+        }
+      }
+    }//end of p (LINE NEWS 폰img)
+  }//end of header 
   section{
     >.article_1{
       margin-top: 100px;
@@ -22,8 +45,23 @@
         text-indent: -9999px;
         background-image: url(./../images/bg_mdLP01IR_03.png);
         background-repeat: no-repeat;
-      }
-    }//.article_1 end
+        @media #{$mobile}{
+          width: 680px;
+          height: 173px;
+          background-position-x: -100px;
+          background-size: contain;
+        }
+      }//end of h2(NEWS TAB)
+      >p{
+        @media #{$mobile}{
+          width: 650px;
+          height: 200px;
+          >img{
+            width: 100%;
+          }
+        }
+      }//end of p (LINE TABS 폰img)
+    }//end of.article_1 end
     .article_2{
       >
       h2{
@@ -31,21 +69,49 @@
         text-indent: -9999px;
         background-image: url(./../images/bg_mdLP01IR_05_01.png);
         background-repeat: no-repeat;
-      }
+        @media #{$mobile}{
+          width: 650px;
+          height: 373px;
+          margin-top: 100px;
+          background-position-x: -80px;
+          background-size: contain;
+        }
+      }//end of h2(LIBE NEWS DIGEST)
       >p{
         height: 707px;
+        @media #{$mobile}{
+        position: relative;
+        height: 200px;
+          >img{
+            position: absolute;
+            top: -200px;
+            left: 33px;
+            width: 200px;
+            height: 100px;
+            width: 100%;
+          }
+        }
         >img{
           height: 100%;
         }
       }
-    }//.article_2 end
+    }//end of .article_2 
     .article_3{
+      position: relative;
       >h2{
         height: 388px;
         text-indent: -9999px;
         background-image: url(./../images/bg_mdLP01IR_07.png);
         background-repeat: no-repeat;
-      }
+        @media #{$mobile}{
+          position: absolute;
+          top: -200px;
+          width: 650px;
+          height: 373px;
+          background-position-x: -80px;
+          background-size: contain;
+        }
+      }//end of h2(ACCOUNT MEDIA)
     }//.article_3 end
   }//section end
   footer{
